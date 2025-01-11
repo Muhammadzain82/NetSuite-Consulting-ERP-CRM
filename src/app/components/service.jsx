@@ -38,15 +38,20 @@ const Service = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {/* First Column */}
                     <div
-                        className="bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl p-5 hover:bg-blue-100 text-white">
+                        className="bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl px-5 pt-5 hover:bg-blue-100 text-white flex flex-col">
                         <h3 className="text-left mt-4 sm:text-xl md:text-xl lg:text-2xl font-semibold mb-5">
                             Comprehensive ERP/CRM Services
                         </h3>
                         <p className="text-sm sm:text-base text-left leading-relaxed">
                             Streamline your business processes with scalable ERP/CRM solutions that adapt to your evolving needs.
                         </p>
-                        <img src="./images/service (6).png" alt="ERP/CRM Services" className="w-full mt-4" />
+                        <img
+                            src="./images/service (6).png"
+                            alt="ERP/CRM Services"
+                            className="w-full mt-auto mb-0"
+                        />
                     </div>
+
 
                     {/* Second Column */}
                     <div
@@ -61,10 +66,10 @@ const Service = () => {
                     </div>
 
                     {/* Third Column Split into Two Rows */}
-                    <div className="grid grid-rows-2 gap-5">
+                    <div className="grid grid-rows-2 gap-5 p-auto">
                         {/* Row 1 */}
                         <div
-                            className="bg-[#FBFBFB] rounded-xl p-5 hover:bg-blue-100"
+                            className="bg-[#FBFBFB] rounded-xl px-5 hover:bg-blue-100 py-10"
                         >
                             <h3 className="text-left text-black sm:text-xl md:text-xl lg:text-2xl font-semibold">
                                 NetSuite Customization
@@ -87,7 +92,7 @@ const Service = () => {
                                 </p>
                             </div>
                             <div className="w-full md:w-2/6 flex justify-center items-center mt-4 md:mt-0">
-                                <img src="./images/service (5).png" alt="NetSuite Mobility" className="w-full" />
+                                <img src="./images/service (5).png" alt="NetSuite Mobility" className="w-full mt-auto mb-0" />
                             </div>
                         </div>
 
@@ -95,50 +100,51 @@ const Service = () => {
                 </div>
 
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-5">
-                    <div className="flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-6 lg:p-8 hover:bg-blue-100 gap-4 lg:gap-8">
-                        {/* Text Content */}
-                        <div className="flex-1">
-                            <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-semibold text-left">
-                                NetSuite Integration
-                            </h3>
-                            <p className="mt-4 text-sm sm:text-base text-gray-600 text-left">
-                                Connect NetSuite to your systems for seamless data flow and enhanced efficiency.
-                            </p>
-                        </div>
-                        {/* Image */}
-                        <div className="flex-shrink-0 w-full lg:w-auto">
-                            <img
-                                src="./images/services.png"
-                                alt="NetSuite Services"
-                                className="w-full max-w-xs lg:max-w-none mx-auto lg:mx-0"
-                            />
-                        </div>
-                    </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5 mt-5">
+    {/* First Section */}
+    <div className="flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-6 lg:p-8 hover:bg-blue-100 gap-4 lg:gap-8">
+        {/* Text Content */}
+        <div className="flex-1">
+            <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-semibold text-left">
+                NetSuite Integration
+            </h3>
+            <p className="mt-4 text-sm sm:text-base text-gray-600 text-left">
+                Connect NetSuite to your systems for seamless data flow and enhanced efficiency.
+            </p>
+        </div>
+        {/* Image */}
+        <div className="flex-shrink-0 w-full lg:w-1/2 xl:w-1/3">
+            <img
+                src="./images/services.png"
+                alt="NetSuite Services"
+                className="w-full h-auto object-contain mx-auto lg:mx-0"
+            />
+        </div>
+    </div>
 
-                    <div className="flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-4 lg:p-6 hover:bg-blue-100 gap-4 lg:gap-8">
-                        {/* Text Content */}
-                        <div className="flex-1">
-                            <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-semibold text-left">
-                                NetSuite Implementation
-                            </h3>
-                            <p className="mt-4 text-sm sm:text-base text-gray-600 text-left leading-relaxed">
-                                Streamline your transition to NetSuite with expert implementation support.
-                            </p>
-                        </div>
+    {/* Second Section */}
+    <div className="flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-4 lg:p-6 hover:bg-blue-100 gap-4 lg:gap-8">
+        {/* Text Content */}
+        <div className="flex-1">
+            <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-semibold text-left">
+                NetSuite Implementation
+            </h3>
+            <p className="mt-4 text-sm sm:text-base text-gray-600 text-left leading-relaxed">
+                Streamline your transition to NetSuite with expert implementation support.
+            </p>
+        </div>
 
-                        {/* Image */}
-                        <div className="flex-shrink-0 w-full lg:w-auto">
-                            <img
-                                src="./images/service (1).png"
-                                alt="NetSuite Implementation"
-                                className="w-full max-w-xs lg:max-w-none mx-auto lg:mx-0"
-                            />
-                        </div>
-                    </div>
+        {/* Image */}
+        <div className="flex-shrink-0 w-full lg:w-1/2 xl:w-1/3">
+            <img
+                src="./images/service (1).png"
+                alt="NetSuite Implementation"
+                className="w-full h-auto object-contain mx-auto lg:mx-0"
+            />
+        </div>
+    </div>
+</div>
 
-
-                </div>
             </div>
         </div>
     );

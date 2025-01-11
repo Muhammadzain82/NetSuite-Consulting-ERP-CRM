@@ -10,7 +10,6 @@ const Slider = () => {
         "/images/6.png",
         "/images/7.png",
         "/images/8.png",
-
     ];
 
     return (
@@ -21,7 +20,7 @@ const Slider = () => {
                         key={index}
                         src={src}
                         alt={`Slider Image ${index + 1}`}
-                        className="h-30 w-auto object-contain"
+                        className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain"
                     />
                 ))}
                 {/* Duplicate the images to create a seamless effect */}
@@ -30,7 +29,7 @@ const Slider = () => {
                         key={`duplicate-${index}`}
                         src={src}
                         alt={`Slider Duplicate Image ${index + 1}`}
-                        className="h-40 w-auto object-contain"
+                        className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain"
                     />
                 ))}
             </div>

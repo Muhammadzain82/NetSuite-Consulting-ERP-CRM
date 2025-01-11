@@ -45,7 +45,7 @@ const StartAndStepper = () => {
   // };
 
   return (
-    <div className={`${dmSans.className} flex items-center justify-center max-w-7xl bg-gray-50 mx-auto mt-10`}>
+    <div className={`${dmSans.className} flex items-center justify-center max-w-7xl bg-gray-50 mx-auto mt-20`}>
       {currentStep === 0 ? (
         
         <div className="max-w-md w-full px-8 py-20 text-center">

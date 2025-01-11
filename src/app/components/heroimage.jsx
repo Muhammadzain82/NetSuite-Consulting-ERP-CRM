@@ -7,7 +7,7 @@ const Heroimage = () => {
       <img 
         src="./images/line.png" 
         alt="Line"
-        className="absolute left-0 -rotate-12 "
+        className="absolute left-0 -rotate-12 h-6 lg:h-auto md:h-10 "
         style={{ top: 0 }} 
       />
       
@@ -15,7 +15,7 @@ const Heroimage = () => {
       <img 
         src="./images/Frame.png" 
         alt="Frame"
-        className="absolute right-0 rotate-17 "
+        className="absolute right-0 rotate-17 h-10 lg:h-auto md:h-10"
         style={{ top: 0 }} 
       />
 

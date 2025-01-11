@@ -14,7 +14,7 @@ const Feature = () => {
                 <div className="grid grid-cols-1 gap-8 md:gap-y-12 lg:grid-cols-2">
                     {/* Left side - Image */}
                     <div className="flex justify-center">
-                        <img src="./images/Group 58.png" alt="" />
+                        <img src="./images/Group 58.png" alt="" className='h-auto w-auto lg:p-10'/>
                     </div>
 
                     {/* Right side - Text */}

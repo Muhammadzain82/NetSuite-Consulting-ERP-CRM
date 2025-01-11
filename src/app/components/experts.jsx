@@ -57,7 +57,7 @@ const Experts = () => {
       </p>
 
       {/* Stats Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
         {/* Stat 1 */}
         <div className="text-center">
           <AnimatedNumber target={40} />
