@@ -15,7 +15,7 @@ const Herosection = () => {
   return (
     <div className={`${dmSans.className} mt-10 px-4 sm:px-6 lg:px-8`}>
       <div className="max-w-5xl text-center mx-auto">
-        <div className="absolute lg:mt-40 md:mt-36 mt-36 right-[8%] "><Joinbtn /></div>
+        <div className="absolute lg:mt-40 md:mt-36 mt-36 right-[10%] "><Joinbtn /></div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl mx-auto mt-12 font-normal">
           Transform{' '}
           <span className="bg-black text-transparent bg-clip-text font-bold">
@@ -28,7 +28,7 @@ const Herosection = () => {
 
         </h1>
         <div className="grid justify-items-center">
-          <div className="text-[#6A7080] text-lg sm:text-xl md:text-2xl font-medium lg:my-6 md:my-6 my-20">
+          <div className="text-[#6A7080] text-lg sm:text-xl md:text-2xl font-medium lg:my-6 md:my-6 my-16">
             <div className="absolute lg:mt-12 md:mt-12 mt-20 left-[10%]">
               <Growbtn />
             </div>

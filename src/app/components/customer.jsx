@@ -12,7 +12,7 @@ const Customer = () => {
       <div className="flex flex-col-reverse lg:flex-row justify-between gap-8 lg:gap-16 max-w-8xl mx-auto items-center px-6 lg:px-12 py-8 border border-[#ECECEC] rounded-lg">
         {/* Left Section */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="text-5xl sm:text-4xl  leading-tight">
+          <h1 className="text-5xl leading-tight">
           Customer {' '}
             <span className="text-5xl bg-black text-transparent bg-clip-text font-bold">
             Success 

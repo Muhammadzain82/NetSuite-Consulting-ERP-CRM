@@ -18,7 +18,7 @@ const Feature = () => {
                     </div>
 
                     {/* Right side - Text */}
-                    <div className="text-white px-8">
+                    <div className="text-white px-5 lg:px-4">
                         {/* Button */}
                         <Button
                             bgColor="bg-[#FBFBFB47]"
