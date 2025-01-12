@@ -38,8 +38,8 @@ const Feature = () => {
                         </p>
 
                         {/* List of Features */}
-                        <ul className="flex flex-wrap gap-5 my-5 list-disc pl-5">
-                            <li className="w-full sm:w-[45%]">
+                        <ul className="flex flex-wrap gap-16 my-5 list-disc pl-5">
+                            <li className="w-full sm:w-[40%]">
                                 <div>
                                     <h4 className="text-xl font-semibold">Financial Management</h4>
                                     <p>
@@ -47,7 +47,7 @@ const Feature = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className="w-full sm:w-[45%]">
+                            <li className="w-full sm:w-[40%]">
                                 <div>
                                     <h4 className="text-xl font-semibold">E-Commerce Integration</h4>
                                     <p>
@@ -55,7 +55,7 @@ const Feature = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className="w-full sm:w-[45%]">
+                            <li className="w-full sm:w-[40%]">
                                 <div>
                                     <h4 className="text-xl font-semibold">Reporting and Analytics</h4>
                                     <p>
@@ -63,7 +63,7 @@ const Feature = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className="w-full sm:w-[45%]">
+                            <li className="w-full sm:w-[40%]">
                                 <div>
                                     <h4 className="text-xl font-semibold">Project Management</h4>
                                     <p>

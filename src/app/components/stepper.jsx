@@ -56,12 +56,12 @@ const StartAndStepper = () => {
 
   return (
     <div
-      className={`${dmSans.className} mt-20 flex items-center justify-center h-[80vh] w-[90%] mx-auto bg-gray-50`}
+      className={`${dmSans.className} mt-20 flex items-center justify-center rounded-lg h-[80vh] w-[90%] mx-auto bg-gray-50`}
     >
       {currentStep === 0 ? (
-        <div className="max-w-md w-full px-8 py-20 text-center">
-          <h1 className="text-5xl text-gray-800 leading-15">
-            Bring <span className="font-bold">Your Ideas</span>
+        <div className="max-w-lg w-full px-8 py-20 text-center">
+          <h1 className="text-6xl text-gray-800 leading-15">
+            Bring <span className="font-bold">Your <br/> Ideas</span>
             <span className="text-blue-600 font-bold"> to Life</span>
           </h1>
           <p className="mt-6 text-gray-600">

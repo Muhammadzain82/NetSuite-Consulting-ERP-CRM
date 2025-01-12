@@ -64,7 +64,7 @@ const Testimonal = () => {
     <>
       <div className={`${dmSans.className} my-10`}>
         <div className="bg-gradient-to-r from-blue-500 to-blue-700 my-5 pt-12 relative">
-          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="max-w-7xl mt-5 mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-start lg:items-end gap-10 mb-0">
               {/* Left side - Testimonial Card */}
               <div className="order-2 lg:order-1 flex items-end">
@@ -103,7 +103,7 @@ const Testimonal = () => {
 
               {/* Right side - Text */}
               <div className="order-1 lg:order-2 text-white pb-12 pl-10 lg:pb-0">
-                <button className="bg-[#ECECEC] text-[#0B56E0] rounded-full px-10 py-2 text-sm mb-6">
+                <button className="bg-[#ECECEC] text-[#0B56E0] rounded-full px-10 py-2 text-sm mb-10">
                   Testimonials
                 </button>
                 <h1 className="text-4xl lg:text-5xl font-semibold">
