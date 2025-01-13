@@ -25,17 +25,17 @@ const FAQ = () => {
     {
       id: 2,
       question: 'How do I know if NetSuite is the right solution for my business?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor auctor arcu, at fermentum dui.',
+      answer: 'Yes, NetSuite is considered worth the investment for businesses looking for a robust and integrated cloud-based ERP solution. It offers a wide range of features, including financial management, CRM, and e-commerce, which can help streamline operations and improve overall efficiency.',
     },
     {
       id: 3,
       question: 'What industries does NetSuite support?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor auctor arcu, at fermentum dui.',
+      answer: 'Companies, both large and small, are constantly on the lookout for solutions that can streamline their operations, enhance productivity, and drive growth. Oracle NetSuite is at the forefront of enhancing business operations, being the leading cloud-based ERP software, used by over 40,000 companies worldwide.',
     },
     {
       id: 4,
       question: 'How long does it take to implement NetSuite ERP?',
-      answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor auctor arcu, at fermentum dui.',
+      answer: 'Generally speaking, a NetSuite implementation can take anywhere from three to six months on average. The length of a NetSuite implementation can vary depending on several factors such as the size and complexity of the organization, the scope of the project, and the level of customization required.',
     },
   ];
 
@@ -88,7 +88,7 @@ const FAQ = () => {
               className={`content transition-all duration-300 overflow-hidden ${activeIndex === index ? 'max-h-screen pb-4' : 'max-h-0 invisible'
                 }`}
             >
-              <p className="text-sm text-[#6A7080] mt-4">{item.answer}</p>
+              <p className="text-sm text-[#6A7080] mt-4 mr-5">{item.answer}</p>
             </div>
           </div>
         </div>

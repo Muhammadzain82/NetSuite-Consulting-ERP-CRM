@@ -5,7 +5,6 @@ import { DM_Sans } from "next/font/google";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -54,11 +53,21 @@ const Testimonal = () => {
   };
 
   useEffect(() => {
+    // Initialize AOS
     AOS.init({
       duration: 1000, 
       once: true, 
     });
+
+    // Set up the interval to automatically change the testimonial every 5 seconds
+    const interval = setInterval(handleNext, 5000);
+
+    // Clean up the interval when the component unmounts
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
+
   return (
     <>
       <div className={`${dmSans.className} my-10`} id="testimonials">
@@ -102,10 +111,10 @@ const Testimonal = () => {
 
               {/* Right side - Text */}
               <div className="order-1 lg:order-2 text-white pb-12 pl-10 lg:pb-0">
-                <button className="bg-[#ECECEC] text-[#0B56E0] rounded-full px-10 py-2 text-sm mb-10">
+                <button className="bg-[#ECECEC] text-[#0B56E0] rounded-full px-5 py-2 text-sm mb-10">
                   Testimonials
                 </button>
-                <h1 className="text-4xl lg:text-5xl font-semibold">
+                <h1 className="text-4xl lg:text-4xl">
                   What Our Clients{" "}
                   <span className="bg-white text-transparent bg-clip-text font-bold">
                     Say About Us
@@ -116,7 +125,7 @@ const Testimonal = () => {
                   them achieve their goals with tailored solutions.
                 </p>
                 <h1 className="text-5xl font-bold mb-2">500+</h1>
-                <p className="text-lg mb-5">Happy Clients</p>
+                <p className="text-lg my-10">Happy Clients</p>
               </div>
             </div>
           </div>

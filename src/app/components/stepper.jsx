@@ -90,9 +90,9 @@ const Stepper = () => {
       />
     </div>
       ) : (
-        <div className="w-[80%] p-8">
+        <div className="w-[90%] p-8">
           <div className="flex justify-center items-center mb-20">
-            <div className="flex justify-center items-center w-full justify-center">
+            <div className="flex justify-center items-center w-full justify-center w-[70%]">
               {[1, 2, 3, 4].map((step) => (
                 <div key={step} className="flex items-center w-full max-w-xl">
                   <div
@@ -126,7 +126,7 @@ const Stepper = () => {
                     name={question.name}
                     placeholder={question.placeholder}
                     onChange={handleInputChange}
-                    className="w-full px-5 py-2 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-transparent"
+                    className="w-full px-5 py-2 mb-10 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-transparent"
                   />
                 ) : (
                   <input
@@ -158,5 +158,3 @@ const Stepper = () => {
 };
 
 export default Stepper;
-
-
