@@ -90,7 +90,7 @@ const Stepper = () => {
       />
     </div>
       ) : (
-        <div className="w-[90%] p-8">
+        <div className="w-[80%] p-8">
           <div className="flex justify-center items-center mb-20">
             <div className="flex justify-center items-center w-full justify-center w-[70%]">
               {[1, 2, 3, 4].map((step) => (
