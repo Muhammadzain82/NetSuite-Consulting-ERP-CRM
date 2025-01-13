@@ -8,6 +8,7 @@ const dmSans = DM_Sans({
 
 const Customer = () => {
   return (
+    
     <div className={`${dmSans.className} mt-10 px-4 lg:px-8`}>
       <div className="flex flex-col-reverse lg:flex-row justify-between gap-8 lg:gap-16 max-w-8xl mx-auto items-center px-6 lg:px-12 py-8 border border-[#ECECEC] rounded-lg">
         {/* Left Section */}
