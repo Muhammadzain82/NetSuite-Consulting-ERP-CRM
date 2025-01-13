@@ -7,39 +7,4 @@ html {
   }
   
 
-  @keyframes moveDownAndFill {
-    0% {
-      transform: translateY(-100px); /* Start from above */
-      opacity: 0;
-      fill: transparent; /* No color at the start */
-    }
-    60% {
-      transform: translateY(30px); /* Circle starts moving down */
-      opacity: 0.7;
-      fill: rgba(59, 130, 246, 0.5); /* Partial blue fill as it moves */
-    }
-    100% {
-      transform: translateY(0); /* Final position */
-      opacity: 1; /* Fully visible */
-      fill: rgba(59, 130, 246, 1); /* Fully filled blue circle */
-    }
-  }
-  
-  @keyframes drawCheckmark {
-    0% {
-      stroke-dasharray: 200;
-      stroke-dashoffset: 200; /* Start with checkmark hidden */
-    }
-    100% {
-      stroke-dasharray: 200; /* Full stroke length */
-      stroke-dashoffset: 0; /* Draw the checkmark */
-    }
-  }
-  
-  .animate-checkmark {
-    animation: moveDownAndFill 2s ease-out, drawCheckmark 1.5s 2s ease-out forwards;
-    stroke-dasharray: 200; /* Length of the path for checkmark */
-    stroke-dashoffset: 200; /* Start with checkmark hidden */
-    fill: transparent;
-  }
   
