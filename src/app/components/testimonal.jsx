@@ -61,7 +61,7 @@ const Testimonal = () => {
   }, []);
   return (
     <>
-      <div className={`${dmSans.className} my-10`}>
+      <div className={`${dmSans.className} my-10`} id="testimonials">
         <div className="bg-gradient-to-r from-blue-500 to-blue-700 my-5 pt-12 relative">
           <div className="max-w-7xl mt-5 mx-auto px-6 lg:px-12">
             <div className="grid grid-cols-1 lg:grid-cols-2 items-start lg:items-end gap-10 mb-0">

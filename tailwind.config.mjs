@@ -16,6 +16,7 @@ export default {
           '100%': { transform: 'translateX(-100%)' },
         },
       },
+
     },
   },
   plugins: [],

@@ -9,7 +9,7 @@ const dmSans = DM_Sans({
 
 const Feature = () => {
     return (
-        <div className={`${dmSans.className} bg-gradient-to-r from-blue-500 to-blue-700 my-10 py-12`}>
+        <div className={`${dmSans.className} bg-gradient-to-r from-blue-500 to-blue-700 my-10 py-12`} id="features">
             <div className="max-w-full max-md:max-w-md mx-auto">
                 <div className="grid grid-cols-1 gap-8 md:gap-y-12 lg:grid-cols-2">
                     {/* Left side - Image */}

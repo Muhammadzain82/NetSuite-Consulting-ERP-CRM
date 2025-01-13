@@ -11,7 +11,7 @@ const dmSans = DM_Sans({
 const Service = () => {
 
     return (
-        <div className={`${dmSans.className} my-10`}>
+        <div className={`${dmSans.className} my-10`} id="services">
             <div className="mx-5 py-16 px-4">
                 <Button
                     value={"Services"}

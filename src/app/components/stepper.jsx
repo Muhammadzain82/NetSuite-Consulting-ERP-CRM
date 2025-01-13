@@ -1,14 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { DM_Sans } from "next/font/google";
-import { AiOutlineCheckCircle } from "react-icons/ai";
+import { LiaCheckCircle } from "react-icons/lia";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
 
-const StartAndStepper = () => {
+const Stepper = () => {
   const [currentStep, setCurrentStep] = useState(0); 
   const [formData, setFormData] = useState({});
 
@@ -26,7 +26,7 @@ const StartAndStepper = () => {
       { placeholder: "Enter preferred time", name: "preferredTime" },
     ],
     [
-      { label: "Additional Notes", placeholder: "Enter additional notes", name: "notes", isTextArea: true },
+      { placeholder: "Enter additional notes", name: "notes", isTextArea: true },
     ],
   ];
 
@@ -56,7 +56,7 @@ const StartAndStepper = () => {
 
   useEffect(() => {
     if (currentStep === 4) {
-      const timer = setTimeout(() => setCurrentStep(0), 5000); 
+      const timer = setTimeout(() => setCurrentStep(0), 2000); 
       return () => clearTimeout(timer); 
     }
   }, [currentStep]);
@@ -84,12 +84,15 @@ const StartAndStepper = () => {
         </div>
       ) : currentStep === 4 ? (
         <div className="text-center px-8 py-20">
-          <AiOutlineCheckCircle className="text-blue-600 text-6xl mx-auto mb-4 animate-bounce"/> 
-        </div>
+      <LiaCheckCircle
+        size={100}
+        className="text-blue-600 text-6xl mx-auto mb-4 animate-checkmark"
+      />
+    </div>
       ) : (
-        <div className="w-full p-8">
+        <div className="w-[80%] p-8">
           <div className="flex justify-center items-center mb-20">
-            <div className="flex items-center w-full justify-center">
+            <div className="flex justify-center items-center w-full justify-center">
               {[1, 2, 3, 4].map((step) => (
                 <div key={step} className="flex items-center w-full max-w-xl">
                   <div
@@ -139,7 +142,7 @@ const StartAndStepper = () => {
             ))}
           </form>
 
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mb-0 mt-10 bottom-0">
             <button
               onClick={handleNext}
               className="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700"
@@ -148,9 +151,12 @@ const StartAndStepper = () => {
             </button>
           </div>
         </div>
+        
       )}
     </div>
   );
 };
 
-export default StartAndStepper;
+export default Stepper;
+
+
