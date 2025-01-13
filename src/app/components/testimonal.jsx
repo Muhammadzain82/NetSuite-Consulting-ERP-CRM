@@ -54,10 +54,9 @@ const Testimonal = () => {
   };
 
   useEffect(() => {
-    // Initialize AOS when the component mounts
     AOS.init({
-      duration: 1000, // animation duration
-      once: true, // animation only happens once (on scroll into view)
+      duration: 1000, 
+      once: true, 
     });
   }, []);
   return (

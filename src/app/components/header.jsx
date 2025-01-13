@@ -35,13 +35,13 @@ const Navbar = () => {
                                 <Link href="/">Home</Link>
                             </li>
                             <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                                <Link href="/about">Services</Link>
+                                <Link href="/service">Services</Link>
                             </li>
                             <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                                <Link href="/services">Features</Link>
+                                <Link href="/feature">Features</Link>
                             </li>
                             <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                                <Link href="/contact">Testimonials</Link>
+                                <Link href="/testimonial">Testimonials</Link>
                             </li>
                         </ul>
 

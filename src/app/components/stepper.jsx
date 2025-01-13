@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DM_Sans } from "next/font/google";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 
@@ -9,7 +9,7 @@ const dmSans = DM_Sans({
 });
 
 const StartAndStepper = () => {
-  const [currentStep, setCurrentStep] = useState(0); // Initially at step 0
+  const [currentStep, setCurrentStep] = useState(0); 
   const [formData, setFormData] = useState({});
 
   const stepQuestions = [
@@ -31,20 +31,20 @@ const StartAndStepper = () => {
   ];
 
   const handleStart = () => {
-    setCurrentStep(0.5); // Start at step 1 halfway
-    setTimeout(() => setCurrentStep(1), 1000); // Move to step 1 fully after animation
+    setCurrentStep(0.5);
+    setTimeout(() => setCurrentStep(1), 1000); 
   };
 
   const handleNext = () => {
     if (Math.floor(currentStep) === 3) {
-      // If on Step 3, go directly to Step 4
+      
       setCurrentStep(4);
     } else if (currentStep < stepQuestions.length) {
-      // For other steps, transition to the next step
-      setCurrentStep((prev) => prev + 0.5); // Smooth transition
-      setTimeout(() => setCurrentStep((prev) => Math.ceil(prev)), 1000); // Move to exact step
+      
+      setCurrentStep((prev) => prev + 0.5); 
+      setTimeout(() => setCurrentStep((prev) => Math.ceil(prev)), 1000); 
     } else if (currentStep === 4) {
-      // Reset after Thank You page
+      
       setCurrentStep(0);
     }
   };
@@ -53,6 +53,13 @@ const StartAndStepper = () => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  useEffect(() => {
+    if (currentStep === 4) {
+      const timer = setTimeout(() => setCurrentStep(0), 5000); 
+      return () => clearTimeout(timer); 
+    }
+  }, [currentStep]);
 
   return (
     <div
@@ -77,22 +84,10 @@ const StartAndStepper = () => {
         </div>
       ) : currentStep === 4 ? (
         <div className="text-center px-8 py-20">
-          <AiOutlineCheckCircle className="text-blue-600 text-6xl mx-auto mb-4 animate-bounce" />
-          <h2 className="text-3xl font-bold text-gray-800">Thank You!</h2>
-          <p className="mt-2 text-lg text-gray-600">
-            Your form has been successfully submitted. We’ll contact you soon!
-          </p>
-          <div className="flex justify-center mt-10">
-            <button
-              onClick={handleNext}
-              className="px-6 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700"
-            >
-              Next
-            </button>
-          </div>
+          <AiOutlineCheckCircle className="text-blue-600 text-6xl mx-auto mb-4 animate-bounce"/> 
         </div>
       ) : (
-        <div className="w-full max-w-lg p-8">
+        <div className="w-full p-8">
           <div className="flex justify-center items-center mb-20">
             <div className="flex items-center w-full justify-center">
               {[1, 2, 3, 4].map((step) => (
@@ -106,7 +101,7 @@ const StartAndStepper = () => {
                   </div>
                   {step < 4 && (
                     <div
-                      className={`flex-grow h-[3px]  ${
+                      className={`flex-grow justify-center h-[3px] mx-5  ${
                         step < currentStep ? "bg-blue-600" : "bg-gray-300"
                       } transition-all duration-500`}
                     ></div>
@@ -128,7 +123,7 @@ const StartAndStepper = () => {
                     name={question.name}
                     placeholder={question.placeholder}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-transparent"
+                    className="w-full px-5 py-2 border-b-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 bg-transparent"
                   />
                 ) : (
                   <input
