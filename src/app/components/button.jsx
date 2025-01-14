@@ -1,23 +1,30 @@
-import React from 'react';
-import { DM_Sans } from 'next/font/google';
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion"; // Import framer-motion
+import { DM_Sans } from "next/font/google";
 
 const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 const Button = ({ value, bgColor, textColor, className, onClick }) => {
-  // Define class mappings for dynamic props
-  const bgClass = bgColor || 'bg-gradient-to-r from-blue-500 to-blue-700';
-  const textClass = textColor || 'text-white';
-  
+  const bgClass = bgColor || "bg-gradient-to-r from-blue-500 to-blue-700";
+  const textClass = textColor || "text-white";
 
   return (
-    <button
-      className={`${dmSans.className} ${bgClass} ${textClass} ${className} ${onClick} px-4 py-2 hover:opacity-90`}
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.01, ease: "easeInOut" }}
+      onClick={onClick}
+      className={`${dmSans.className} ${bgClass} ${textClass} ${className} px-4 py-2 hover:opacity-90 rounded-lg shadow-md`}
     >
       {value}
-    </button>
+    </motion.button>
   );
 };
 

@@ -20,7 +20,7 @@ const Navbar = () => {
     const element = document.getElementById(id);
 
     if (element) {
-      const offset = 80; // Adjust based on navbar height
+      const offset = 80;
       const top = element.offsetTop - offset;
 
       window.scrollTo({
@@ -28,7 +28,6 @@ const Navbar = () => {
         behavior: "smooth",
       });
 
-      // Close the menu for small screens
       if (isClick) {
         setIsClick(false);
       }

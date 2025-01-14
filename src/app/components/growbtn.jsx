@@ -10,10 +10,10 @@ const dmSans = DM_Sans({
 const Growbtn = () => {
   return (
     <div className={`${dmSans.className} relative inline-block`}>
-      <img 
-        src="./images/Vector (1).png" 
-        alt="Arrow" 
-        className="absolute -top-5 -right-5" 
+      <img
+        src="./images/Vector (1).png"
+        alt="Arrow"
+        className="absolute -top-5 -right-5"
       />
       <Button
         bgColor="bg-[#FBFBFB]"

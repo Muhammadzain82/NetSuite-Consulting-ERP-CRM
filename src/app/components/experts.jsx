@@ -1,40 +1,70 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import Button from './button';
-import { DM_Sans } from 'next/font/google';
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import Button from "./button";
+import { DM_Sans } from "next/font/google";
 
 const dmSans = DM_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
-const AnimatedNumber = ({ target }) => {
+const AnimatedNumber = ({ target, duration, animate }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
+    if (!animate) return;
+
+    setCount(0);
+
+    const step = target / (duration / 20);
     const interval = setInterval(() => {
       setCount((prev) => {
         if (prev < target) {
-          return prev + 1;
+          const nextValue = prev + step;
+          return nextValue >= target ? target : nextValue;
         }
         clearInterval(interval);
         return prev;
       });
-    }, 20); // Adjust the speed of the animation
+    }, 20);
 
     return () => clearInterval(interval);
-  }, [target]);
+  }, [target, duration, animate]);
 
   return (
     <h1 className="bg-gradient-to-r from-blue-500 to-blue-700 text-5xl md:text-8xl text-transparent bg-clip-text font-bold">
-      {count}+
+      {Math.floor(count)}+
     </h1>
   );
 };
 
 const Experts = () => {
+  const [animate, setAnimate] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimate(true);
+        } else {
+          setAnimate(false);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const totalDuration = 2000;
+
   return (
-    <div className={`${dmSans.className} mx-5 px-5 my-20`}>
+    <div ref={sectionRef} className={`${dmSans.className} mx-5 px-5 my-20`}>
       {/* Button */}
       <Button
         bgColor="bg-transparent"
@@ -60,25 +90,25 @@ const Experts = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
         {/* Stat 1 */}
         <div className="text-center">
-          <AnimatedNumber target={40} />
+          <AnimatedNumber target={40} duration={totalDuration} animate={animate} />
           <p className="text-[#6A7080] mt-5">Certified Experts</p>
         </div>
 
         {/* Stat 2 */}
         <div className="text-center">
-          <AnimatedNumber target={500} />
+          <AnimatedNumber target={500} duration={totalDuration} animate={animate} />
           <p className="text-[#6A7080] mt-5">Successful Projects</p>
         </div>
 
         {/* Stat 3 */}
         <div className="text-center">
-          <AnimatedNumber target={10} />
+          <AnimatedNumber target={10} duration={totalDuration} animate={animate} />
           <p className="text-[#6A7080] mt-5">Years of Experience</p>
         </div>
 
         {/* Stat 4 */}
         <div className="text-center">
-          <AnimatedNumber target={300} />
+          <AnimatedNumber target={300} duration={totalDuration} animate={animate} />
           <p className="text-[#6A7080] mt-5">Custom Implementations</p>
         </div>
       </div>

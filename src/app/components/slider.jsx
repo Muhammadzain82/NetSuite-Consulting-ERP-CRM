@@ -23,7 +23,7 @@ const Slider = () => {
                         className="h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain"
                     />
                 ))}
-                {/* Duplicate the images to create a seamless effect */}
+
                 {images.map((src, index) => (
                     <img
                         key={`duplicate-${index}`}
