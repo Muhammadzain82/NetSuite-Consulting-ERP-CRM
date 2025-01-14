@@ -14,7 +14,7 @@ const testimonials = [
   {
     id: 1,
     icon: "./images/icon.png",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do not nyoun terd tempor incididunt,  eiusmod tempor incididunt ut labore et dolore magna aliqua quis nostrud exercitation ullamco.",
+    text: "The level of professionalism and commitment this team brought to our project was outstanding. They went above and beyond to ensure every detail was perfect, and their innovative approach has made a lasting impact on our business operations.",
     name: "Mike Warren",
     role: "Product Developer at Webflow",
     date: "14/Dec/2024",
@@ -22,7 +22,7 @@ const testimonials = [
   {
     id: 2,
     icon: "./images/icon.png",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis nostrud exercitation ullamco.",
+    text: "This team has been instrumental in helping us achieve our goals. Their clear communication, problem-solving skills, and dedication to delivering quality results made all the difference. I would highly recommend their services to anyone.",
     name: "Micheal Jackson",
     role: "Founder, CEO",
     date: "16/Dec/2024",
@@ -30,10 +30,11 @@ const testimonials = [
   {
     id: 3,
     icon: "./images/icon.png",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua quis nostrud exercitation ullamco.",
+    text: "Working with this team was a fantastic experience! Their expertise, attention to detail, and dedication to delivering the best results exceeded our expectations. They truly understood our needs and provided innovative solutions that significantly improved our operations.",
     name: "Sara Khan",
     role: "Project Manager",
     date: "20/Dec/2024",
+
   },
 ];
 
@@ -53,16 +54,13 @@ const Testimonal = () => {
   };
 
   useEffect(() => {
-    // Initialize AOS
     AOS.init({
-      duration: 1000, 
-      once: true, 
+      duration: 1000,
+      once: true,
     });
 
-    // Set up the interval to automatically change the testimonial every 5 seconds
     const interval = setInterval(handleNext, 5000);
 
-    // Clean up the interval when the component unmounts
     return () => {
       clearInterval(interval);
     };
@@ -85,7 +83,7 @@ const Testimonal = () => {
                       src={testimonials[currentIndex].icon}
                       alt={testimonials[currentIndex].name}
                     />
-                    <p className="text-[#514F6E] text-sm mb-4 leading-relaxed">
+                    <p className="text-[#514F6E] text-sm my-4 leading-relaxed">
                       {testimonials[currentIndex].text}
                     </p>
                     <div className="flex justify-between items-center mt-6"
@@ -100,7 +98,7 @@ const Testimonal = () => {
                           {testimonials[currentIndex].role}
                         </p>
                       </div>
-                      <p className="text-[#A1A0A6] text-sm" 
+                      <p className="text-[#A1A0A6] text-sm"
                       >
                         {testimonials[currentIndex].date}
                       </p>
@@ -110,8 +108,8 @@ const Testimonal = () => {
               </div>
 
               {/* Right side - Text */}
-              <div className="order-1 lg:order-2 text-white pb-12 pl-10 lg:pb-0">
-                <button className="bg-[#ECECEC] text-[#0B56E0] rounded-full px-5 py-2 text-sm mb-10">
+              <div className="order-1 lg:order-2 text-white pb-12 pl-10 lg:pb-0" data-aos="fade-up">
+                <button className="bg-[white] text-[#0B56E0] rounded-full px-5 py-2 text-sm mb-10">
                   Testimonials
                 </button>
                 <h1 className="text-4xl lg:text-4xl">
@@ -124,7 +122,7 @@ const Testimonal = () => {
                   Hear from our satisfied clients about how we&apos;ve helped
                   them achieve their goals with tailored solutions.
                 </p>
-                <h1 className="text-5xl font-bold mb-2">500+</h1>
+                <h1 className="text-5xl font-bold mb-2" data-aos="flip-down">500+</h1>
                 <p className="text-lg my-10">Happy Clients</p>
               </div>
             </div>

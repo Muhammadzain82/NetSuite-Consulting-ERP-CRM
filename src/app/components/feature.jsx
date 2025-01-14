@@ -14,25 +14,20 @@ const Feature = () => {
                 <div className="grid grid-cols-1 gap-8 md:gap-y-12 lg:grid-cols-2">
                     {/* Left side - Image */}
                     <div className="flex justify-center">
-                        <img src="./images/Group 58.png" alt="" className='h-auto w-auto lg:p-10'/>
+                        <img src="./images/Group 58.png" alt="" className='h-auto w-auto lg:p-10' />
                     </div>
 
                     {/* Right side - Text */}
                     <div className="text-white px-5 lg:px-4">
-                        {/* Button */}
                         <Button
                             bgColor="bg-[#FBFBFB47]"
                             textColor="text-white"
                             value="Features"
                             className="border border-white rounded-full px-8"
                         />
-
-                        {/* Heading */}
                         <h1 className="text-5xl text-white mt-10">
                             Key Features of <span className="bg-white text-5xl text-transparent bg-clip-text font-bold">NetSuite ERP</span>
                         </h1>
-
-                        {/* Description */}
                         <p className="max-w-2xl text-white my-10">
                             NetSuite ERP offers a comprehensive suite of tools, including financial management, inventory tracking, order management, CRM integration, and advanced reporting. Designed to streamline operations, enhance decision-making, and support global scalability, it’s the ultimate solution for driving business growth and efficiency.
                         </p>

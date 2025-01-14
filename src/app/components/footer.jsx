@@ -16,7 +16,7 @@ const Footer = () => {
     const element = document.getElementById(id);
 
     if (element) {
-      const offset = 80; // Adjust based on navbar height
+      const offset = 80;
       const top = element.offsetTop - offset;
 
       window.scrollTo({
@@ -24,7 +24,7 @@ const Footer = () => {
         behavior: "smooth",
       });
 
-      // Close the menu for small screens
+
       if (isMenuOpen) {
         setIsMenuOpen(false);
       }
@@ -69,25 +69,24 @@ const Footer = () => {
           ))}
         </ul>
 
-        {/* Gradient Divider */}
-        <div className="hidden lg:block bg-gradient-to-r from-[#0B56E0] to-[#367CFF] h-1 w-72"></div>
-      </nav>
 
-      {/* Social Icons Section */}
-      <div className="flex gap-4 text-lg lg:text-xl text-[#181818]">
-        {[
-          { icon: FaInstagram, name: "Instagram" },
-          { icon: FaLinkedinIn, name: "LinkedIn" },
-          { icon: FaFacebookF, name: "Facebook" },
-          { icon: FaTwitter, name: "Twitter" },
-        ].map((social, index) => (
-          <social.icon
-            key={index}
-            className="hover:text-[#0B56E0] cursor-pointer"
-            aria-label={social.name}
-          />
-        ))}
-      </div>
+        <div className="hidden lg:block bg-gradient-to-r from-[#0B56E0] to-[#367CFF] h-1 w-72"></div>
+
+        <div className="flex gap-4 text-lg lg:text-xl text-[#181818]">
+          {[
+            { icon: FaInstagram, name: "Instagram" },
+            { icon: FaLinkedinIn, name: "LinkedIn" },
+            { icon: FaFacebookF, name: "Facebook" },
+            { icon: FaTwitter, name: "Twitter" },
+          ].map((social, index) => (
+            <social.icon
+              key={index}
+              className="hover:text-[#0B56E0] cursor-pointer"
+              aria-label={social.name}
+            />
+          ))}
+        </div>
+      </nav>
     </footer>
   );
 };

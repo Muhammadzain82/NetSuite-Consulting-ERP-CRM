@@ -13,9 +13,9 @@ const Customer = () => {
         {/* Left Section */}
         <div className="lg:w-1/2 text-center lg:text-left">
           <h1 className="text-5xl leading-tight">
-          Customer {' '}
+            Customer {' '}
             <span className="text-5xl bg-black text-transparent bg-clip-text font-bold">
-            Success 
+              Success
             </span>{' '}
             with{' '}
             <span className="text-5xl bg-gradient-to-r from-[#0B56E0] to-[#367CFF] text-transparent bg-clip-text font-bold">
@@ -26,7 +26,7 @@ const Customer = () => {
             Streamline operations and drive growth with tailored NetSuite solutions.
           </p>
         </div>
-        
+
         {/* Right Section */}
         <div className="lg:w-1/2 flex flex-col items-center lg:items-end">
           <div className="flex items-center gap-4">

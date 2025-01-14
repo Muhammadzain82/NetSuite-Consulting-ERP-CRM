@@ -10,10 +10,10 @@ const dmSans = DM_Sans({
 const Joinbtn = () => {
   return (
     <div className={`${dmSans.className} relative inline-block`}>
-      <img 
-        src="./images/Vector.png" 
-        alt="Arrow" 
-        className="absolute -top-5 -left-5" 
+      <img
+        src="./images/Vector.png"
+        alt="Arrow"
+        className="absolute -top-5 -left-5"
       />
       <Button
         value="Join Us"
