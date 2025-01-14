@@ -15,7 +15,7 @@ const Herosection = () => {
   return (
     <div className={`${dmSans.className} mt-5 px-4 sm:px-6 lg:px-8`} id="home">
       <div className="max-w-5xl text-center mx-auto">
-        <div className="absolute lg:mt-40 md:mt-36 mt-40 right-[10%] "><Joinbtn /></div>
+        <div className="absolute lg:mt-40 md:mt-36 mt-44 right-[8%]"><Joinbtn /></div>
         <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl mx-auto mt-12 font-normal">
           Transform{' '}
           <span className="bg-black text-transparent bg-clip-text font-bold">
