@@ -18,7 +18,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y sshpass
         mkdir -p ~/.ssh
-        chmod 700 ~/.ssh
+        chmod 600 ~/.ssh
 
     - name: Add SSH Host Key
       run: |
