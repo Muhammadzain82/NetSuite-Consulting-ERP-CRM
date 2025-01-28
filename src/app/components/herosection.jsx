@@ -1,5 +1,6 @@
 import React from 'react';
 import { DM_Sans } from 'next/font/google';
+import Link from 'next/link';
 import Button from './button';
 import Heroimage from "./heroimage";
 import Growbtn from './growbtn';
@@ -16,7 +17,7 @@ const Herosection = () => {
     <div className={`${dmSans.className} mt-5 px-4 sm:px-6 lg:px-8`} id="home">
       <div className="max-w-5xl text-center mx-auto">
         <div className="absolute lg:mt-40 md:mt-36 mt-44 right-[8%]"><Joinbtn /></div>
-        <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl mx-auto mt-12 font-normal">
+        <h1 className="text-4xl sm:text-4xl md:text-6xl lg:text-7xl mx-auto mt-12 font-normal" data-aos="fade-up">
           Transform{' '}
           <span className="bg-black text-transparent bg-clip-text font-bold">
             Your Business
@@ -28,18 +29,20 @@ const Herosection = () => {
 
         </h1>
         <div className="grid justify-items-center">
-          <div className="text-[#6A7080] text-lg sm:text-xl md:text-2xl font-medium lg:my-6 md:my-6 my-16">
+          <div className="text-[#6A7080] text-lg sm:text-xl md:text-2xl font-medium lg:my-6 md:my-6 my-16" >
             <div className="absolute lg:mt-12 md:mt-12 mt-24 left-[10%]">
               <Growbtn />
             </div>
-            Streamline operations and drive growth with tailored NetSuite solutions.
+            <p data-aos="fade-up">Streamline operations and drive growth with tailored NetSuite solutions.</p>
           </div>
 
-          <div className="flex flex-wrap justify-center mx-auto gap-4 sm:gap-6 mt-5">
+          <div className="flex flex-wrap justify-center mx-auto gap-4 sm:gap-6 mt-5" data-aos="zoom-in-down">
+            <Link href = "./Chatbox">
             <Button
               value="Get a Free Quote"
               className="rounded-lg"
             />
+            </Link>
             <Button
               bgColor="bg-white"
               textColor="text-[#0B56E0]"

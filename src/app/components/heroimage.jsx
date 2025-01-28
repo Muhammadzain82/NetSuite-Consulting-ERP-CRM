@@ -7,7 +7,8 @@ const Heroimage = () => {
       <img
         src="./images/line.png"
         alt="Line"
-        className="absolute left-0 -rotate-12 h-6 lg:h-auto md:h-10 "
+        className="absolute left-0 -rotate-12 h-6 lg:h-auto md:h-10 " data-aos="fade-down"
+        data-aos-duration="10000"
         style={{ top: 0 }}
       />
 
@@ -15,7 +16,8 @@ const Heroimage = () => {
       <img
         src="./images/Frame.png"
         alt="Frame"
-        className="absolute right-0 rotate-17 h-10 lg:h-auto md:h-10"
+        className="absolute right-0 rotate-17 h-10 lg:h-auto md:h-10" data-aos="fade-down"
+        data-aos-duration="10000"
         style={{ top: 0 }}
       />
 
@@ -23,7 +25,9 @@ const Heroimage = () => {
       <img
         src="./images/hero.png"
         alt="Hero"
-        className="relative mx-auto"
+        className="relative mx-auto" data-aos="flip-up"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
       />
     </div>
   )

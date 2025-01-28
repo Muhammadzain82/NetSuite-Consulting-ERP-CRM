@@ -94,7 +94,9 @@ const Stepper = () => {
           ></motion.div>
         </div>
       ) : currentStep === 0 ? (
-        <div className="max-w-lg w-full px-8 py-20 text-center">
+        <div className="max-w-lg w-full px-8 py-20 text-center"
+        data-aos="fade-up"
+            data-aos-duration="3000">
           <h1 className="text-6xl text-gray-800 leading-15">
             Bring <span className="font-bold">Your <br /> Ideas</span>
             <span className="text-blue-600 font-bold"> to Life</span>

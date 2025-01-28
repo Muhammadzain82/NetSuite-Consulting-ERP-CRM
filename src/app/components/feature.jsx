@@ -14,7 +14,11 @@ const Feature = () => {
                 <div className="grid grid-cols-1 gap-8 md:gap-y-12 lg:grid-cols-2">
                     {/* Left side - Image */}
                     <div className="flex justify-center">
-                        <img src="./images/Group 58.png" alt="" className='h-auto w-auto lg:p-10' />
+                        <img src="./images/Group 58.png" alt="" className='h-auto w-auto lg:p-10' 
+                        data-aos="fade-zoom-in"
+                        data-aos-easing="ease-in-back"
+                        data-aos-delay="300"
+                        data-aos-offset="0"/>
                     </div>
 
                     {/* Right side - Text */}
@@ -23,18 +27,28 @@ const Feature = () => {
                             bgColor="bg-[#FBFBFB47]"
                             textColor="text-white"
                             value="Features"
-                            className="border border-white rounded-full px-8"
+                            className="border border-white rounded-full px-8" data-aos="fade-up"
+            data-aos-duration="3000"
                         />
-                        <h1 className="text-5xl text-white mt-10">
+                        <h1 className="text-5xl text-white mt-10"
+                        data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="200">
                             Key Features of <span className="bg-white text-5xl text-transparent bg-clip-text font-bold">NetSuite ERP</span>
                         </h1>
-                        <p className="max-w-2xl text-white my-10">
+                        <p className="max-w-2xl text-white my-10"
+                        data-aos="fade-down"
+                        data-aos-easing="linear"
+                        data-aos-duration="300">
                             NetSuite ERP offers a comprehensive suite of tools, including financial management, inventory tracking, order management, CRM integration, and advanced reporting. Designed to streamline operations, enhance decision-making, and support global scalability, it’s the ultimate solution for driving business growth and efficiency.
                         </p>
 
                         {/* List of Features */}
                         <ul className="flex flex-wrap gap-16 my-5 list-disc pl-5">
-                            <li className="w-full sm:w-[40%]">
+                            <li className="w-full sm:w-[40%]"
+                                data-aos="fade-right"
+                                data-aos-offset="300"
+                                data-aos-easing="ease-in-sine">
                                 <div>
                                     <h4 className="text-xl font-semibold">Financial Management</h4>
                                     <p>
@@ -42,7 +56,10 @@ const Feature = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className="w-full sm:w-[40%]">
+                            <li className="w-full sm:w-[40%]"
+                                data-aos="fade-right"
+                                data-aos-offset="300"
+                                data-aos-easing="ease-in-sine">
                                 <div>
                                     <h4 className="text-xl font-semibold">E-Commerce Integration</h4>
                                     <p>
@@ -50,7 +67,10 @@ const Feature = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className="w-full sm:w-[40%]">
+                            <li className="w-full sm:w-[40%]"
+                            data-aos="fade-right"
+                            data-aos-offset="300"
+                            data-aos-easing="ease-in-sine">
                                 <div>
                                     <h4 className="text-xl font-semibold">Reporting and Analytics</h4>
                                     <p>
@@ -58,7 +78,10 @@ const Feature = () => {
                                     </p>
                                 </div>
                             </li>
-                            <li className="w-full sm:w-[40%]">
+                            <li className="w-full sm:w-[40%]"
+                            data-aos="fade-right"
+                            data-aos-offset="300"
+                            data-aos-easing="ease-in-sine">
                                 <div>
                                     <h4 className="text-xl font-semibold">Project Management</h4>
                                     <p>

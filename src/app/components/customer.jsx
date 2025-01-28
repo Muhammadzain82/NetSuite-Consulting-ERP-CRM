@@ -13,7 +13,9 @@ const Customer = () => {
       <div className="flex flex-col-reverse lg:flex-row justify-between gap-8 lg:gap-16 max-w-8xl mx-auto items-center px-6 lg:px-12 py-8 border border-[#ECECEC] rounded-lg">
         {/* Left Section */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <h1 className="text-5xl leading-tight">
+          <h1 className="text-5xl leading-tight"
+          data-aos="fade-up"
+          data-aos-duration="2000">
             Customer {' '}
             <span className="text-5xl bg-black text-transparent bg-clip-text font-bold">
               Success
@@ -23,7 +25,9 @@ const Customer = () => {
               <br /> NetSuite Solutions
             </span>
           </h1>
-          <p className="text-[#6A7080] text-sm sm:text-md font-medium my-4 sm:my-5">
+          <p className="text-[#6A7080] text-sm sm:text-md font-medium my-4 sm:my-5"
+          data-aos="fade-up"
+          data-aos-duration="3000">
             Streamline operations and drive growth with tailored NetSuite solutions.
           </p>
         </div>
@@ -35,8 +39,13 @@ const Customer = () => {
               src="./images/heart.png"
               alt="Heart Icon"
               className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
-            />
-            <p className="text-2xl sm:text-4xl font-bold text-[#0B56E0]">
+              data-aos="fade-right"
+              data-aos-offset="300"
+              data-aos-easing="ease-in-sine"/>
+            <p className="text-2xl sm:text-4xl font-bold text-[#0B56E0]"
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine">
               26,563
             </p>
           </div>
@@ -44,7 +53,8 @@ const Customer = () => {
             src="./images/people.png"
             alt="People"
             className="w-28 h-12 sm:w-36 sm:h-16 object-contain"
-          />
+            data-aos="fade-up"
+            data-aos-duration="3000"/>
         </div>
       </div>
     </div>
