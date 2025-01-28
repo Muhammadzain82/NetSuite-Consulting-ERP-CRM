@@ -19,10 +19,13 @@ const Service = () => {
                     textColor="text-[#0B56E0]"
                     className={"rounded-full px-8 mb-5"}
                 />
-                <h3 className="text-black text-5xl  mb-5">
+                <h3 className="text-black text-5xl mb-5" data-aos="fade-up"
+            data-aos-duration="3000">
                     Empowering Your Business with <span className='font-semibold'>NetSuite Solutions</span>
                 </h3>
-                <p className="flex flex-col sm:flex-row justify-between mt-4 text-sm sm:text-base text-gray-600 leading-relaxed">
+                <p className="flex flex-col sm:flex-row justify-between mt-4 text-sm sm:text-base text-gray-600 leading-relaxed"
+                data-aos="fade-up"
+                data-aos-duration="3000">
                     <span>
                         Streamline operations, enhance efficiency, and achieve growth with our tailored NetSuite services.
                     </span>
@@ -37,7 +40,10 @@ const Service = () => {
             <div className="mx-10 px-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                     {/* First Column */}
-                    <div className="group bg-[#FBFBFB] rounded-xl px-5 pt-5 hover:bg-gradient-to-r from-blue-500 to-blue-700 text-black flex flex-col">
+                    <div className="group bg-[#FBFBFB] rounded-xl px-5 pt-5 hover:bg-gradient-to-r from-blue-500 to-blue-700 text-black flex flex-col"
+                    data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000">
                         <h3 className="text-left mt-4 sm:text-xl md:text-xl lg:text-2xl font-semibold mb-5 group-hover:text-white">
                             Comprehensive ERP/CRM Services
                         </h3>
@@ -52,7 +58,10 @@ const Service = () => {
                     </div>
 
                     {/* Second Column */}
-                    <div className="group bg-[#FBFBFB] rounded-xl hover:bg-gradient-to-r from-blue-500 to-blue-700 mx-auto">
+                    <div className="group bg-[#FBFBFB] rounded-xl hover:bg-gradient-to-r from-blue-500 to-blue-700 mx-auto"
+                    data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000">
                         <h3 className="text-black group-hover:text-white text-center sm:text-xl md:text-xl lg:text-2xl font-semibold mt-5">
                             NetSuite WebStore Design
                         </h3>
@@ -65,7 +74,10 @@ const Service = () => {
                     {/* Third Column Split into Two Rows */}
                     <div className="grid lg:grid-rows-2 gap-5 p-auto">
                         {/* Row 1 */}
-                        <div className="group h-auto bg-[#FBFBFB] rounded-xl px-5 hover:bg-gradient-to-r from-blue-500 to-blue-700 py-10">
+                        <div className="group h-auto bg-[#FBFBFB] rounded-xl px-5 hover:bg-gradient-to-r from-blue-500 to-blue-700 py-10"
+                        data-aos="flip-up"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000">
                             <h3 className="text-left text-black sm:text-xl md:text-xl lg:text-2xl font-semibold group-hover:text-white">
                                 NetSuite Customization
                             </h3>
@@ -75,7 +87,10 @@ const Service = () => {
                         </div>
 
                         {/* Row 2 */}
-                        <div className="group flex flex-col sm:flex-col md:flex-row bg-[#FBFBFB] rounded-xl px-5 hover:bg-gradient-to-r from-blue-500 to-blue-700">
+                        <div className="group flex flex-col sm:flex-col md:flex-row bg-[#FBFBFB] rounded-xl px-5 hover:bg-gradient-to-r from-blue-500 to-blue-700"
+                        data-aos="flip-up"
+                        data-aos-easing="ease-out-cubic"
+                        data-aos-duration="2000">
                             <div className="w-full md:w-4/6">
                                 <h3 className="text-left text-black py-5 sm:text-xl md:text-xl lg:text-2xl font-semibold group-hover:text-white">
                                     NetSuite Mobility
@@ -93,7 +108,10 @@ const Service = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5 mt-5">
                     {/* First Section */}
-                    <div className="group flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-6 lg:p-8 hover:bg-gradient-to-r from-blue-500 to-blue-700 gap-4 lg:gap-8">
+                    <div className="group flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-6 lg:p-8 hover:bg-gradient-to-r from-blue-500 to-blue-700 gap-4 lg:gap-8"
+                    data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000">
                         {/* Text Content */}
                         <div className="flex-1 text-left">
                             <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-semibold group-hover:text-white">
@@ -115,7 +133,10 @@ const Service = () => {
                     </div>
 
                     {/* Second Section */}
-                    <div className="group flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-4 lg:p-6 hover:bg-gradient-to-r from-blue-500 to-blue-700 gap-4 lg:gap-8">
+                    <div className="group flex flex-col lg:flex-row items-center bg-[#FBFBFB] rounded-xl p-4 lg:p-6 hover:bg-gradient-to-r from-blue-500 to-blue-700 gap-4 lg:gap-8"
+                    data-aos="flip-left"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="2000">
                         {/* Text Content */}
                         <div className="flex-1">
                             <h3 className="text-black text-lg sm:text-xl lg:text-2xl font-semibold text-left group-hover:text-white">

@@ -47,11 +47,14 @@ const FAQ = () => {
           textColor="text-[#0B56E0]"
           value="FAQ&apos;s"
           className="border border-[#ECECEC] px-8 mb-5 rounded-full"
-        />
-        <h4 className="text-4xl text-[#00000] my-5">
+          data-aos="fade-up"
+          data-aos-duration="3000"/>
+        <h4 className="text-4xl text-[#00000] my-5" data-aos="fade-up"
+            data-aos-duration="3000">
           Frequently Asked <span className="font-bold"> Questions</span>
         </h4>
-        <p className="text-[#6A7080]">
+        <p className="text-[#6A7080]" data-aos="fade-up"
+            data-aos-duration="3000">
           Find answers to common questions and learn more about how we can help you.
         </p>
       </div>
@@ -62,6 +65,8 @@ const FAQ = () => {
           className="accordion flex items-center gap-10 py-6 border-b border-gray-200"
           key={item.id}
           role="accordion"
+          data-aos="fade-up"
+            data-aos-duration="3000"
         >
           {/* Styled Number */}
           <div className="text-3xl text-[#0B56E0]">{`0${item.id}`}</div>
