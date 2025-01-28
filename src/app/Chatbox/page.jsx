@@ -11,10 +11,13 @@ export default function Chat({ onSubmit }) {
 
   const steps = [
     { id: 1, label: "Your Full Name", question: "What's your name?" },
-    { id: 2, label: "Your Company Name", question: "What's your company name?" },
-    { id: 3, label: "Type of Business", question: "What type of business do you have?" },
-    { id: 4, label: "Contact Info", question: "What's your contact information?" },
-    { id: 5, label: "Setup Your Account", question: "Let's set up your account." },
+    { id: 2, label: "Your Email", question: "Enter Your Email?" },
+    { id: 3, label: "Phone Number", question: "Enter Your Phone Number?" },
+    { id: 4, label: "Company Name", question: "Enter Your Company Name?" },
+    { id: 5, label: "Service of Interest", question: "Enter Your Service of Interest?" },
+    { id: 6, label: "Preferred Date", question: "Enter Your Preferred Date?" },
+    { id: 7, label: "Preferred Date", question: "Enter Your Preferred Date?" },
+    { id: 7, label: "Add Notes", question: "  Any Additional Notes" },
   ];
 
   const handleInputChange = (e) => {
