@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 import { DM_Sans } from "next/font/google";
 
 const dmSans = DM_Sans({
@@ -23,8 +23,8 @@ const Button = ({ value, bgColor, textColor, className, onClick }) => {
       onClick={onClick}
       className={`${dmSans.className} ${bgClass} ${textClass} ${className} px-4 py-2 hover:opacity-90 rounded-lg shadow-md`}
       data-aos="flip-left"
-                    data-aos-easing="ease-out-cubic"
-                    data-aos-duration="2000"
+      data-aos-easing="ease-out-cubic"
+      data-aos-duration="2000"
     >
       {value}
     </motion.button>

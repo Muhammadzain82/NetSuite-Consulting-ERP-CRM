@@ -1,36 +1,63 @@
-import React from 'react'
+"use client";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { motion } from "framer-motion";
 
 const Heroimage = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      offset: 200,
+      once: false,
+    });
+  }, []);
+
   return (
-    <div className='relative mt-5'>
+    <div className="relative mt-5 z-10">
       {/* Line Image */}
-      <img
+      <motion.img
         src="./images/line.png"
         alt="Line"
-        className="absolute left-0 -rotate-12 h-6 lg:h-auto md:h-10 " data-aos="fade-down"
-        data-aos-duration="10000"
+        className="absolute left-0 -rotate-12 h-6 lg:h-auto md:h-10"
+        data-aos="fade-down"
+        data-aos-duration="2000"
         style={{ top: 0 }}
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: false }}
       />
 
       {/* Frame Image */}
-      <img
+      <motion.img
         src="./images/Frame.png"
         alt="Frame"
-        className="absolute right-0 rotate-17 h-10 lg:h-auto md:h-10" data-aos="fade-down"
-        data-aos-duration="10000"
+        className="absolute right-0 rotate-17 h-10 lg:h-auto md:h-10"
+        data-aos="fade-down"
+        data-aos-duration="2000"
         style={{ top: 0 }}
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        viewport={{ once: false }}
       />
 
       {/* Hero Image */}
-      <img
+      <motion.img
         src="./images/hero.png"
         alt="Hero"
-        className="relative mx-auto" data-aos="flip-up"
+        className="relative mx-auto"
+        data-aos="flip-up"
         data-aos-easing="ease-out-cubic"
         data-aos-duration="2000"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        viewport={{ once: false }}
       />
     </div>
-  )
-}
+  );
+};
 
 export default Heroimage;
