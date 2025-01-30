@@ -1,7 +1,10 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './button';
 import { DM_Sans } from 'next/font/google';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { motion } from 'framer-motion';
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -14,6 +17,14 @@ const FAQ = () => {
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      easing: 'ease-out',
+    });
+  }, []);
 
   const questions = [
     {
@@ -40,25 +51,19 @@ const FAQ = () => {
   ];
 
   return (
-    <div className={`${dmSans.className} rounded-lg max-w-8xl mx-5 px-12 my-20`}>
+    <div className={`${dmSans.className} rounded-lg max-w-8xl px-12 my-20`}>
       <div className="mb-8">
-        <Button
-          bgColor="bg-[#FBFBFB]"
-          textColor="text-[#0B56E0]"
-          value="FAQ&apos;s"
-          className="border border-[#ECECEC] px-8 mb-5 rounded-full"
-          data-aos="fade-up"
-          data-aos-duration="3000"/>
-        <h4 className="text-4xl text-[#00000] my-5" data-aos="fade-up"
-            data-aos-duration="3000">
+        <button className='bg-[#FBFBFB] text-[#0B56E0] border border-[#ECECEC] rounded-full py-2 px-8'>
+          FAQ&apos;s
+        </button>
+
+        <h4 className="text-4xl text-[#00000] my-5" data-aos="fade-up" data-aos-anchor-placement="top-center">
           Frequently Asked <span className="font-bold"> Questions</span>
         </h4>
-        <p className="text-[#6A7080]" data-aos="fade-up"
-            data-aos-duration="3000">
+        <p className="text-[#6A7080]" data-aos="fade-up" data-aos-anchor-placement="top-center">
           Find answers to common questions and learn more about how we can help you.
         </p>
       </div>
-
 
       {questions.map((item, index) => (
         <div
@@ -66,7 +71,7 @@ const FAQ = () => {
           key={item.id}
           role="accordion"
           data-aos="fade-up"
-            data-aos-duration="3000"
+          data-aos-anchor-placement="top-center"
         >
           {/* Styled Number */}
           <div className="text-3xl text-[#0B56E0]">{`0${item.id}`}</div>
@@ -80,8 +85,7 @@ const FAQ = () => {
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                className={`w-4 h-4 ml-auto text-[#0B56E0] transform transition-transform ${activeIndex === index ? 'rotate-180' : ''
-                  }`}
+                className={`w-4 h-4 ml-auto text-[#0B56E0] transform transition-transform ${activeIndex === index ? 'rotate-180' : ''}`}
               >
                 <path
                   fill="currentColor"
@@ -89,17 +93,20 @@ const FAQ = () => {
                 />
               </svg>
             </button>
-            <div
-              className={`content transition-all duration-300 overflow-hidden ${activeIndex === index ? 'max-h-screen pb-4' : 'max-h-0 invisible'
-                }`}
+
+            {/* Framer Motion for animation */}
+            <motion.div
+              className="content overflow-hidden"
+              initial={{ maxHeight: 0 }}
+              animate={{ maxHeight: activeIndex === index ? 1000 : 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             >
               <p className="text-sm text-[#6A7080] mt-4 mr-5">{item.answer}</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       ))}
     </div>
-
   );
 };
 

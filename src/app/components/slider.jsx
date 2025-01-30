@@ -12,6 +12,7 @@ const Slider = () => {
         "/images/8.png",
     ];
 
+
     return (
         <div className="overflow-hidden w-full my-20">
             <div className="flex animate-marquee space-x-6">
