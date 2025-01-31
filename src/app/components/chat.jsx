@@ -1,35 +1,62 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { SlArrowLeft } from "react-icons/sl";
 
 export default function Chat({ onSubmit }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [responses, setResponses] = useState({});
   const [messages, setMessages] = useState([]);
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const chatHistoryRef = useRef(null);
 
   const steps = [
-    { id: 1, label: "Your Full Name", question: "What's your name?" },
-    { id: 2, label: "Your Email", question: "Enter Your Email?" },
-    { id: 3, label: "Phone Number", question: "Enter Your Phone Number?" },
-    { id: 4, label: "Company Name", question: "Enter Your Company Name?" },
-    { id: 5, label: "Service of Interest", question: "Enter Your Service of Interest?" },
-    { id: 6, label: "Preferred Date", question: "Enter Your Preferred Date?" },
-    { id: 7, label: "Preferred Date", question: "Enter Your Preferred Date?" },
-    { id: 7, label: "Add Notes", question: "  Any Additional Notes" },
+    { id: 1, label: "Your First Name", question: "What's your First name?", type: "text" },
+    { id: 2, label: "Your Last Name", question: "What's your Last name?", type: "text" },
+    { id: 3, label: "Your Email", question: "Enter Your Email?", type: "email" },
+    { id: 4, label: "Phone Number", question: "Enter Your Phone Number?", type: "tel" },
+    { id: 5, label: "Company Name", question: "Enter Your Company Name?", type: "text" },
+    { id: 6, label: "Service of Interest", question: "Enter Your Service of Interest?", type: "text" },
+    { id: 7, label: "Preferred Date", question: "Enter Your Preferred Date?", type: "date" },
+    { id: 8, label: "Preferred Time", question: "Enter Your Preferred Time?", type: "time" },
+    { id: 9, label: "Add Notes", question: "Any Additional Notes?", type: "text" },
   ];
 
   const handleInputChange = (e) => {
+    const { value } = e.target;
+    const stepType = steps[currentStep - 1]?.type;
+
+    // Email validation
+    if (stepType === "email") {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setEmailError(emailPattern.test(value) ? "" : "Invalid email address");
+    }
+
+    // Phone number validation
+    if (stepType === "tel") {
+      const phonePattern = /^[0-9]{10,}$/; // At least 10 digits
+      setPhoneError(phonePattern.test(value) ? "" : "Enter a valid 10-digit phone number");
+    }
+
     setResponses((prev) => ({
       ...prev,
-      [currentStep]: e.target.value,
+      [currentStep]: value,
     }));
   };
 
   const handleNext = () => {
     if (!responses[currentStep]) {
       alert("Please provide an answer before proceeding.");
+      return;
+    }
+
+    // Prevent proceeding if email or phone is invalid
+    if (steps[currentStep - 1]?.type === "email" && emailError) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (steps[currentStep - 1]?.type === "tel" && phoneError) {
+      alert("Please enter a valid 10-digit phone number.");
       return;
     }
 
@@ -108,13 +135,19 @@ export default function Chat({ onSubmit }) {
         <div>
           <label className="block text-gray-700 font-medium mx-5">Your Answer:</label>
           <input
-            type="text"
+            type={steps[currentStep - 1]?.type}
             value={responses[currentStep] || ""}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
             className="mt-2 w-full px-4 py-2 border-b-2 border-blue-500 text-gray-700 focus:outline-none focus:border-blue-700"
-            placeholder="Enter your response"
+            placeholder={`Enter your ${steps[currentStep - 1]?.label.toLowerCase()}`}
           />
+          {emailError && currentStep === 2 && (
+            <p className="text-red-500 text-sm mt-2">{emailError}</p>
+          )}
+          {phoneError && currentStep === 3 && (
+            <p className="text-red-500 text-sm mt-2">{phoneError}</p>
+          )}
         </div>
 
         {/* Navigation Buttons */}
