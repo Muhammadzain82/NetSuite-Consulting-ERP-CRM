@@ -13,7 +13,7 @@ const dmSans = DM_Sans({
 const Service = () => {
     useEffect(() => {
         AOS.init({
-            duration: 1000,
+            duration: 2000,
             once: false,
             easing: 'ease-out',
         });
@@ -22,7 +22,7 @@ const Service = () => {
     return (
         <div className={`${dmSans.className} my-10`} id="services">
             <div className="mx-5 py-16 px-4">
-                <h1 className='bg-[#FBFBFB] text-[#0B56E0] border border-[#ECECEC] px-8 mb-5 rounded-full py-2 px-5 w-[9%]'>Services</h1>
+                <button className='bg-[#FBFBFB] text-[#0B56E0] border border-[#ECECEC] px-8 mb-5 rounded-full py-2 px-5'>Services</button>
                 <h3 className="text-black text-5xl mb-5" data-aos="fade-up" data-aos-anchor-placement="top-center">
                     Empowering Your Business with <span className='font-semibold'>NetSuite Solutions</span>
                 </h3>

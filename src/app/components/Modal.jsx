@@ -16,7 +16,7 @@ export default function Modal({ isOpen, onClose, children }) {
       onClick={handleBackgroundClick}
     >
       <div
-        className="bg-white p-4 rounded-lg shadow-lg w-[80vw] h-[80vh]"
+        className="bg-white p-2 rounded-lg shadow-lg w-[80vw] h-[80vh] mx-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {children}

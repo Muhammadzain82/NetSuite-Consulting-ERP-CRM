@@ -10,6 +10,7 @@ import Slider from "./components/slider";
 import Experts from "./components/experts";
 import Service from "./components/service";
 import Stepper from "./components/stepper";
+import Chatform from "./components/Chatform";
 
 
 export default function Home() {
@@ -24,7 +25,7 @@ export default function Home() {
     <Experts/>
     <FAQ/>
     <Testimonal/> 
-    <Stepper/>
+    <Chatform/>
     <Footer/>
     </>
   );

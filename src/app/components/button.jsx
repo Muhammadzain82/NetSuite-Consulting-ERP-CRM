@@ -24,7 +24,7 @@ const Button = ({ value, bgColor, textColor, className, onClick }) => {
       className={`${dmSans.className} ${bgClass} ${textClass} ${className} px-4 py-2 hover:opacity-90 rounded-lg shadow-md`}
       data-aos="flip-left"
       data-aos-easing="ease-out-cubic"
-      data-aos-duration="2000"
+      data-aos-duration="1000"
     >
       {value}
     </motion.button>

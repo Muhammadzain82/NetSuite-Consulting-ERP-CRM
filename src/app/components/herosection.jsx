@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
 });
 
 const Herosection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -80,7 +80,7 @@ const Herosection = () => {
             viewport={{ once: false }}
           >
             <Button
-              onClick={() => setIsModalOpen(true)}
+              // onClick={() => setIsModalOpen(true)}
               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
               value={"Get a Free Quote"}
             />
@@ -95,10 +95,10 @@ const Herosection = () => {
         </div>
       </div>
 
-      {/* Modal Component */}
+      {/* Modal Component
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <Chat />
-      </Modal>
+      </Modal> */}
 
       {/* Hero Image */}
       <Heroimage />
