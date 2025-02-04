@@ -54,11 +54,7 @@ export default function Chat({ onSubmit }) {
       ...prev,
       [name]: value,
     }));
-    debouncedSaveResponse(name, value);
   };
-  const debouncedSaveResponse = debounce((name, value) => {
-    console.log(`Saving response: ${name} = ${value}`);
-  }, 300);
 
   const handleNext = async () => {
     if (!responses[currentStep]) {
