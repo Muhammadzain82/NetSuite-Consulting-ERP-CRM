@@ -5,8 +5,6 @@ import Button from "./button";
 import Heroimage from "./heroimage";
 import Growbtn from "./growbtn";
 import Joinbtn from "./joinbtn";
-import Modal from "./Modal";
-import Chat from "./chat";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion } from "framer-motion";
@@ -17,7 +15,6 @@ const dmSans = DM_Sans({
 });
 
 const Herosection = () => {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -80,7 +77,6 @@ const Herosection = () => {
             viewport={{ once: false }}
           >
             <Button
-              // onClick={() => setIsModalOpen(true)}
               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
               value={"Get a Free Quote"}
             />
@@ -94,11 +90,6 @@ const Herosection = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Modal Component
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <Chat />
-      </Modal> */}
 
       {/* Hero Image */}
       <Heroimage />
