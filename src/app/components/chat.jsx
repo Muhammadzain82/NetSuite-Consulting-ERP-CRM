@@ -22,7 +22,7 @@ export default function Chat({ onSubmit }) {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = axios.get("https://api.360xpertsolutions.com/api/xpert-consultation-netsuites?sort=id:asc");
+        const response = await axios.get("https://api.360xpertsolutions.com/api/xpert-consultation-netsuites?sort=id:asc");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
@@ -45,18 +45,39 @@ export default function Chat({ onSubmit }) {
     return phonePattern.test(phone);
   };
 
+  const convertTo24HourFormat = (timeString) => {
+    const date = new Date(`1970-01-01T${timeString}`);
+    if (isNaN(date)) {
+      return "";  
+    }
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+    const seconds = date.getSeconds().toString().padStart(2, "0");
+    const milliseconds = date.getMilliseconds().toString().padStart(3, "0");
+
+    return `${hours}:${minutes}:${seconds}.${milliseconds}`;
+  };
+
   const handleInputChange = (e) => {
     const stepType = steps?.[currentStep - 1]?.attributes?.type;
     const { name, value } = e.target;
 
-    // Email validation
+   
     if (stepType === "email") {
       setEmailError(validateEmail(value) ? "" : "Invalid email address");
     }
 
-
     if (stepType === "numbers") {
       setPhoneError(validatePhone(value) ? "" : "Enter a valid 10-digit phone number");
+    }
+
+    if (stepType === "time") {
+      const formattedTime = convertTo24HourFormat(value);
+      setResponses((prev) => ({
+        ...prev,
+        [name]: formattedTime, 
+      }));
+      return;
     }
 
     setResponses((prev) => ({
@@ -97,14 +118,14 @@ export default function Chat({ onSubmit }) {
     } else {
       const formattedResponse = {
         data: {
-          fullName: responses.fullName,
-          email: responses.email,
-          phoneNumber: responses.phoneNumber,
-          companyName: responses.companyName || "",
-          interest: responses.interest,
-          // preferredDate: responses.preferredDate,
-          // preferredTime: responses.preferredTime,
-          additionalNotes: responses.additionalNotes
+          FullName: responses.fullName,
+          Email: responses.email,
+          PhoneNumber: responses.phoneNumber,
+          CompanyName: responses.companyName || "",
+          Interest: responses.interest || "",
+          PreferredDate: responses.preferredDate,
+          PreferredTime: responses.preferredTime ? convertTo24HourFormat(responses.preferredTime) : "",
+          AdditionalNotes: responses.additionalNotes,
         },
       };
 
@@ -123,6 +144,7 @@ export default function Chat({ onSubmit }) {
 
         console.log("Responses submitted successfully:", res);
         alert("Responses submitted successfully!");
+        window.location = "/"
       } catch (error) {
         console.error("Error submitting responses:", error);
         alert("Error submitting your responses. Please try again later.");
@@ -215,8 +237,3 @@ export default function Chat({ onSubmit }) {
   );
 }
 
-Chat.defaultProps = {
-  onSubmit: (responses) => {
-    console.log("Form submitted with:", responses);
-  },
-};
