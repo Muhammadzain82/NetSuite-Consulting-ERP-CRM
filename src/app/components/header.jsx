@@ -52,7 +52,7 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center justify-between w-full">
-              <ul className="flex gap-10 mx-auto font-xl bg-[#F7F8FC] text-[#181818] p-2">
+                <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
                 <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
                   <a href="#home" onClick={(e) => scrollToSection(e, "home")}>
                     Home

@@ -63,6 +63,8 @@ export default function Chat({ onSubmit }) {
       },
     ]);
 
+    setResponses((prev) => ({ ...prev, [currentStepKey]: "" }));
+
     if (currentStep < steps.length) {
       setShowTyping(true); 
       setTimeout(() => {

@@ -16,7 +16,7 @@ const Joinbtn = () => {
         className="absolute -top-5 -left-5"
       />
       <div
-        className="rounded-b-full rounded-r-full px-8 py-2 text-xs bg-gradient-to-r from-blue-500 to-blue-700">
+        className="rounded-b-full rounded-r-full px-8 py-2 text-xs bg-gradient-to-r from-blue-500 to-blue-700 text-white">
          Join Us
         </div>
     </div>

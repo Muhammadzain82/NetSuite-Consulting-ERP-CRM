@@ -29,10 +29,11 @@ const Herosection = () => {
       <div className="max-w-5xl text-center mx-auto">
         <motion.div
           className="absolute lg:mt-40 md:mt-36 mt-44 right-[8%]"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: false }}
+          animate={{ x: [0, 10, -10, 0], y: [0, -5, 5, 0] }}
+          transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut",}}
+          // initial={{ opacity: 0, x: 50 }}
+          // whileInView={{ opacity: 1, x: 0 }}
+          // viewport={{ once: false }}
         >
           <Joinbtn />
         </motion.div>
@@ -55,10 +56,12 @@ const Herosection = () => {
           <div className="text-[#6A7080] text-lg sm:text-xl md:text-2xl font-medium lg:my-6 md:my-6 my-16">
             <motion.div
               className="absolute lg:mt-12 md:mt-12 mt-24 left-[10%]"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: false }}
+              animate={{ x: [0, 10, -10, 0], y: [0, -5, 5, 0] }}
+              transition={{duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut",}}
+              // initial={{ opacity: 0, x: -50 }}
+              // whileInView={{ opacity: 1, x: 0 }}
+              // transition={{ duration: 1 }}
+              // viewport={{ once: false }}
             >
               <Growbtn />
             </motion.div>
