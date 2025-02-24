@@ -8,6 +8,7 @@ export default function Chat({ onSubmit }) {
   const [phoneError, setPhoneError] = useState("");
   const chatHistoryRef = useRef(null);
   const [data, setData] = useState(null);
+  const [showTyping, setShowTyping] = useState(false); 
   const [responses, setResponses] = useState({
     fullName: "",
     email: "",
@@ -34,57 +35,6 @@ export default function Chat({ onSubmit }) {
   }, []);
 
   const steps = data?.data;
-
-  const validateEmail = (email) => {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  };
-
-  const validatePhone = (phone) => {
-    const phonePattern = /^[0-9]{10,}$/;
-    return phonePattern.test(phone);
-  };
-
-  const convertTo24HourFormat = (timeString) => {
-    const date = new Date(`1970-01-01T${timeString}`);
-    if (isNaN(date)) {
-      return "";  
-    }
-    const hours = date.getHours().toString().padStart(2, "0");
-    const minutes = date.getMinutes().toString().padStart(2, "0");
-    const seconds = date.getSeconds().toString().padStart(2, "0");
-    const milliseconds = date.getMilliseconds().toString().padStart(3, "0");
-
-    return `${hours}:${minutes}:${seconds}.${milliseconds}`;
-  };
-
-  const handleInputChange = (e) => {
-    const stepType = steps?.[currentStep - 1]?.attributes?.type;
-    const { name, value } = e.target;
-
-   
-    if (stepType === "email") {
-      setEmailError(validateEmail(value) ? "" : "Invalid email address");
-    }
-
-    if (stepType === "numbers") {
-      setPhoneError(validatePhone(value) ? "" : "Enter a valid 10-digit phone number");
-    }
-
-    if (stepType === "time") {
-      const formattedTime = convertTo24HourFormat(value);
-      setResponses((prev) => ({
-        ...prev,
-        [name]: formattedTime, 
-      }));
-      return;
-    }
-
-    setResponses((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
   const handleNext = async () => {
     const currentStepKey = steps?.[currentStep - 1]?.attributes?.key;
@@ -114,43 +64,17 @@ export default function Chat({ onSubmit }) {
     ]);
 
     if (currentStep < steps.length) {
-      setCurrentStep((prev) => prev + 1);
+      setShowTyping(true); 
+      setTimeout(() => {
+        setShowTyping(false); 
+        setCurrentStep((prev) => prev + 1);
+      }, 2000);
     } else {
-      const formattedResponse = {
-        data: {
-          FullName: responses.fullName,
-          Email: responses.email,
-          PhoneNumber: responses.phoneNumber,
-          CompanyName: responses.companyName || "",
-          Interest: responses.interest || "",
-          PreferredDate: responses.preferredDate,
-          PreferredTime: responses.preferredTime ? convertTo24HourFormat(responses.preferredTime) : "",
-          AdditionalNotes: responses.additionalNotes,
-        },
-      };
-
-      console.log("Formatted Responses to Submit:", formattedResponse);
-
-      try {
-        const res = await axios.post(
-          "https://api.360xpertsolutions.com/api/xpert-consultation-netsuite-responses",
-          formattedResponse,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        console.log("Responses submitted successfully:", res);
-        alert("Responses submitted successfully!");
-        window.location = "/"
-      } catch (error) {
-        console.error("Error submitting responses:", error);
-        alert("Error submitting your responses. Please try again later.");
-      }
+      alert("Responses submitted successfully!");
+      window.location = "/";
     }
   };
+
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") handleNext();
@@ -161,6 +85,7 @@ export default function Chat({ onSubmit }) {
       chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
     }
   }, [messages]);
+
 
   return (
     <div className="w-full h-screen flex justify-center">
@@ -190,21 +115,45 @@ export default function Chat({ onSubmit }) {
               </div>
             </div>
           ))}
+
+          {/* Typing Indicator */}
+          {showTyping && (
+            <div className="flex items-start justify-start space-x-4">
+              <div>
+                <img src="./images/chat.png" alt="" />
+              </div>
+              <div className="bg-blue-500 text-white p-4 rounded-lg max-w-md">
+                <div className="flex space-x-1">
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce"></span>
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-100"></span>
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-200"></span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Current Question */}
-        <div className="flex items-center space-x-4 mb-6 justify-start">
-          <div>
-            <img src="./images/chat.png" alt="" />
+        {!showTyping && (
+          <div className="flex items-center space-x-4 mb-6 justify-start">
+            <div>
+              <img src="./images/chat.png" alt="" />
+            </div>
+            <div className="bg-blue-500 text-white p-4 rounded-lg max-w-md">
+              {steps?.length > 0 ? (
+                <p>{steps?.[currentStep - 1]?.attributes?.question}</p>
+              ) : (
+                <div className="bg-blue-500 text-white p-4 rounded-lg max-w-md">
+                <div className="flex space-x-1">
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce"></span>
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-100"></span>
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-200"></span>
+                </div>
+              </div>
+              )}
+            </div>
           </div>
-          <div className="bg-blue-500 text-white p-4 rounded-lg max-w-md">
-            {steps?.length > 0 ? (
-              <p>{steps?.[currentStep - 1]?.attributes?.question}</p>
-            ) : (
-              <p>...</p>
-            )}
-          </div>
-        </div>
+        )}
 
         {/* Input Section */}
         <div>
@@ -213,14 +162,11 @@ export default function Chat({ onSubmit }) {
             type={steps?.[currentStep - 1]?.attributes?.type}
             name={steps?.[currentStep - 1]?.attributes?.key} 
             value={responses[steps?.[currentStep - 1]?.attributes?.key] || ""}
-            onChange={handleInputChange}
+            onChange={(e) => setResponses((prev) => ({ ...prev, [e.target.name]: e.target.value }))}
             onKeyDown={handleKeyDown}
             className="mt-2 w-full px-4 py-2 border-b-2 border-blue-500 text-gray-700 focus:outline-none focus:border-blue-700"
             placeholder={`Enter your ${steps?.[currentStep - 1]?.attributes?.label}`}
           />
-
-          {emailError && currentStep === 3 && <p className="text-red-500 text-sm mt-2">{emailError}</p>}
-          {phoneError && currentStep === 4 && <p className="text-red-500 text-sm mt-2">{phoneError}</p>}
         </div>
 
         {/* Navigation Buttons */}
@@ -228,6 +174,7 @@ export default function Chat({ onSubmit }) {
           <button
             onClick={handleNext}
             className="w-36 bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-lg focus:outline-none"
+            disabled={showTyping} 
           >
             {currentStep < steps?.length ? "Next" : "Submit"}
           </button>
@@ -236,6 +183,3 @@ export default function Chat({ onSubmit }) {
     </div>
   );
 }
-
-
-
