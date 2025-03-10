@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FaInstagram, FaLinkedinIn, FaFacebookF, FaTwitter } from "react-icons/fa6";
 import { DM_Sans } from 'next/font/google';
+import { motion } from 'framer-motion'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -69,8 +70,13 @@ const Footer = () => {
           ))}
         </ul>
 
+        <motion.hr
+          initial={{ width: 0, opacity: 0 }}
+          whileInView={{ width: "290px", opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="my-8 border-2 border-[#3BAEEB] w-[290px]"
+        />
 
-        <div className="hidden lg:block bg-gradient-to-r from-[#0B56E0] to-[#367CFF] h-1 w-72"></div>
 
         <div className="flex gap-4 text-lg lg:text-xl text-[#181818]">
           {[

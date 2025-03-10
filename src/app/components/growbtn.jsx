@@ -15,12 +15,13 @@ const Growbtn = () => {
         alt="Arrow"
         className="absolute -top-5 -right-5"
       />
-      <Button
+      <div
         bgColor="bg-[#FBFBFB]"
         textColor="text-[#0B56E0]"
-        value="Grow with NetSuite"
-        className="border border-[#ECECEC] px-5 mb-5 rounded-b-full rounded-l-full text-xs"
-      />
+        className="border border-[#ECECEC] p-2 mb-5 rounded-b-full rounded-l-full text-xs"
+      >
+        Grow with NetSuite
+      </div>
     </div>
   );
 };

@@ -56,7 +56,7 @@ const Testimonal = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: true,
+      once: false,
     });
 
     const interval = setInterval(handleNext, 5000);
@@ -108,7 +108,8 @@ const Testimonal = () => {
               </div>
 
               {/* Right side - Text */}
-              <div className="order-1 lg:order-2 text-white pb-12 pl-10 lg:pb-0" data-aos="fade-up">
+              <div className="order-1 lg:order-2 text-white pb-12 pl-10 lg:pb-0" data-aos="fade-up"
+                data-aos-duration="3000">
                 <button className="bg-[white] text-[#0B56E0] rounded-full px-5 py-2 text-sm mb-10">
                   Testimonials
                 </button>

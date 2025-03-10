@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import Button from "./button";
 import { DM_Sans } from "next/font/google";
 
 const dmSans = DM_Sans({
@@ -66,15 +65,12 @@ const Experts = () => {
   return (
     <div ref={sectionRef} className={`${dmSans.className} mx-5 px-5 my-20`}>
       {/* Button */}
-      <Button
-        bgColor="bg-transparent"
-        textColor="text-[#0B56E0]"
-        value="Trusted Excellence"
-        className="border border-[#ECECEC] px-8 py-2 mb-5 rounded-full font-bold"
-      />
+      <button className='bg-[#FBFBFB] text-[#0B56E0] border border-[#ECECEC] py-2 px-5 rounded-full'>
+        Trusted Excellence
+      </button>
 
       {/* Heading */}
-      <h1 className="text-3xl md:text-5xl my-5 text-center">
+      <h1 className="text-3xl md:text-5xl my-5 text-center" data-aos="fade-up">
         Expertise That{" "}
         <span className="bg-black text-transparent bg-clip-text font-bold">
           Matters
@@ -82,7 +78,7 @@ const Experts = () => {
       </h1>
 
       {/* Description */}
-      <p className="text-[#6A7080] text-center max-w-2xl mx-auto">
+      <p className="text-[#6A7080] text-center max-w-2xl mx-auto" data-aos="fade-up">
         Delivering tailored NetSuite solutions to drive efficiency, innovation, and business success.
       </p>
 
@@ -91,25 +87,25 @@ const Experts = () => {
         {/* Stat 1 */}
         <div className="text-center">
           <AnimatedNumber target={40} duration={totalDuration} animate={animate} />
-          <p className="text-[#6A7080] mt-5">Certified Experts</p>
+          <p className="text-[#6A7080] mt-5" data-aos="fade-up">Certified Experts</p>
         </div>
 
         {/* Stat 2 */}
         <div className="text-center">
           <AnimatedNumber target={500} duration={totalDuration} animate={animate} />
-          <p className="text-[#6A7080] mt-5">Successful Projects</p>
+          <p className="text-[#6A7080] mt-5" data-aos="fade-up">Successful Projects</p>
         </div>
 
         {/* Stat 3 */}
         <div className="text-center">
           <AnimatedNumber target={10} duration={totalDuration} animate={animate} />
-          <p className="text-[#6A7080] mt-5">Years of Experience</p>
+          <p className="text-[#6A7080] mt-5" data-aos="fade-up">Years of Experience</p>
         </div>
 
         {/* Stat 4 */}
         <div className="text-center">
           <AnimatedNumber target={300} duration={totalDuration} animate={animate} />
-          <p className="text-[#6A7080] mt-5">Custom Implementations</p>
+          <p className="text-[#6A7080] mt-5" data-aos="fade-up">Custom Implementations</p>
         </div>
       </div>
     </div>
