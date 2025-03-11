@@ -8,6 +8,8 @@ import Joinbtn from "./joinbtn";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion } from "framer-motion";
+import Modal from "./Modal";
+import Chat from "./chat";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -15,6 +17,8 @@ const dmSans = DM_Sans({
 });
 
 const Herosection = () => {
+  const [isClick, setIsClick] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -82,6 +86,7 @@ const Herosection = () => {
             <Button
               className="bg-blue-500 text-white px-4 py-2 rounded-lg"
               value={"Get a Free Quote"}
+              onClick={() => setIsModalOpen(true)}
             />
 
             <Button
@@ -90,11 +95,16 @@ const Herosection = () => {
               value="Book Consultation"
               className="border border-[#0B56E0] rounded-lg"
             />
+
+           
           </motion.div>
         </div>
       </div>
 
       {/* Hero Image */}
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+              <Chat />
+            </Modal>
       <Heroimage />
     </div>
   );

@@ -23,7 +23,7 @@ export default function Chat({ onSubmit }) {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get("https://api.360xpertsolutions.com/api/xpert-consultation-netsuites?sort=id:asc");
+        const response = await axios.get("https://api.360xpertsolutions.com/api/xpert-consultation-netsuites?sort=id:asc&pagination[limit]=3");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching questions:", error);
