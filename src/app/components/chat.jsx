@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import SuccessModal from "./SuccessModal";
 
 export default function Chat({ onSubmit }) {
   const [currentStep, setCurrentStep] = useState(1);
@@ -9,6 +10,7 @@ export default function Chat({ onSubmit }) {
   const chatHistoryRef = useRef(null);
   const [data, setData] = useState(null);
   const [showTyping, setShowTyping] = useState(false); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [responses, setResponses] = useState({
     fullName: "",
     email: "",
@@ -72,11 +74,15 @@ export default function Chat({ onSubmit }) {
         setCurrentStep((prev) => prev + 1);
       }, 2000);
     } else {
-      alert("Responses submitted successfully!");
-      window.location = "/";
+      // alert("Responses submitted successfully!");
+      // window.location = "/";
+      setIsModalOpen(true);
     }
   };
-
+  const closeModal = () => {
+    setIsModalOpen(false);
+    window.location = "/"; 
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") handleNext();
@@ -181,6 +187,7 @@ export default function Chat({ onSubmit }) {
             {currentStep < steps?.length ? "Next" : "Submit"}
           </button>
         </div>
+        <SuccessModal isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </div>
   );
