@@ -151,7 +151,17 @@ export default function Chat({ onSubmit }) {
           <div className="flex items-center space-x-4 mb-6 justify-start">
             <img src="./images/chat.png" alt="" />
             <div className="bg-blue-500 text-white p-4 rounded-lg max-w-md">
-              <p>{steps?.[currentStep - 1]?.attributes?.question || "Loading..."}</p>
+              {steps?.length > 0 ? (
+                <p>{steps?.[currentStep - 1]?.attributes?.question}</p>
+              ) : (
+                <div className="bg-blue-500 text-white p-4 rounded-lg max-w-md">
+                <div className="flex space-x-1">
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce"></span>
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-100"></span>
+                  <span className="w-2 h-2 bg-white rounded-full animate-bounce delay-200"></span>
+                </div>
+              </div>
+              )}
             </div>
           </div>
         )}
@@ -163,9 +173,16 @@ export default function Chat({ onSubmit }) {
             name={steps?.[currentStep - 1]?.attributes?.key}
             value={responses[steps?.[currentStep - 1]?.attributes?.key] || ""}
             onChange={handleChange}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault(); // Prevent default form submission
+                handleNext();
+              }
+            }}
             className="mt-2 w-full px-4 py-2 border-b-2 border-blue-500 text-gray-700 focus:outline-none focus:border-blue-700"
             placeholder={`Enter your ${steps?.[currentStep - 1]?.attributes?.label}`}
           />
+
         </div>
 
         <div className="mt-6 text-center flex justify-start">
