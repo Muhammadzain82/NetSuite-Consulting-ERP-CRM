@@ -1,9 +1,11 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from './button';
 import { DM_Sans } from 'next/font/google';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Modal from './Modal';
+import Chat from './chat';
 
 const dmSans = DM_Sans({
     subsets: ['latin'],
@@ -11,6 +13,8 @@ const dmSans = DM_Sans({
 });
 
 const Service = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
         AOS.init({
             duration: 2000,
@@ -34,8 +38,14 @@ const Service = () => {
                     <Button
                         value={"Get a Free Quote"}
                         className={"rounded-lg mt-4 sm:mt-0"}
+                        onClick={() => setIsModalOpen(true)}
                     />
+
+                    
                 </p>
+                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                    <Chat />
+                </Modal>
             </div>
 
             <div className="mx-10 px-4">
