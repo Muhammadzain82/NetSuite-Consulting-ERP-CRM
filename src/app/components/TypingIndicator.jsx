@@ -5,7 +5,7 @@ import Image from 'next/image';
 const TypingIndicator = () => {
   return (
     <div className="flex items-center gap-4">
-      <Image src="/client.png" loading="lazy" alt="Client" width={40} height={40}/>
+      <Image src="/images/client.png" loading="lazy" alt="Client" width={40} height={40}/>
       <div className="bg-white shadow-md shadow-[#7b8a9c3a] px-6 py-4 rounded-xl">
         <div className="flex space-x-2">
           <motion.div
