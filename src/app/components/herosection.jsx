@@ -90,8 +90,8 @@ const Herosection = () => {
             />
 
             <Button
-              bgColor="bg-white"
-              textColor="text-[#0B56E0]"
+              bgcolor="bg-white"
+              textcolor="text-[#0B56E0]"
               value="Book Consultation"
               className="border border-[#0B56E0] rounded-lg"
             />
