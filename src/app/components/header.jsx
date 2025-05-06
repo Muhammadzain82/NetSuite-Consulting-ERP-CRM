@@ -155,8 +155,8 @@ const Navbar = () => {
             </ul>
 
             <Button
-              bgColor={"bg-gradient-to-r from-[#0B56E0] to-[#367CFF]"}
-              textColor={"text-white"}
+              bgcolor={"bg-gradient-to-r from-[#0B56E0] to-[#367CFF]"}
+              textcolor={"text-white"}
               value={"Book Consultation"}
               round={"lg"}
               onClick={() => setIsModalOpen(true)}
