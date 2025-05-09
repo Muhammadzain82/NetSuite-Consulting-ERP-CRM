@@ -82,6 +82,15 @@ const Navbar = () => {
                     Testimonials
                   </a>
                 </li>
+
+                <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
+                  <a
+                    href="#Blogs"
+                    onClick={(e) => scrollToSection(e, "Blogs")}
+                  >
+                    Blogs
+                  </a>
+                </li>
               </ul>
 
               <Button
@@ -150,6 +159,15 @@ const Navbar = () => {
                   onClick={(e) => scrollToSection(e, "testimonials")}
                 >
                   Testimonials
+                </a>
+              </li>
+
+              <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
+                <a
+                  href="#Blogs"
+                  onClick={(e) => scrollToSection(e, "Blogs")}
+                >
+                  Blogs
                 </a>
               </li>
             </ul>
