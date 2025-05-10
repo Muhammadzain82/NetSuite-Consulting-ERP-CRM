@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import SuccessModal from "./SuccessModal";
+import { ClientPageRoot } from "next/dist/client/components/client-page";
 
 export default function Chat({ onSubmit }) {
   const [currentStep, setCurrentStep] = useState(1);
@@ -11,15 +12,19 @@ export default function Chat({ onSubmit }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [responses, setResponses] = useState({
     fullName: "",
+    companyName: "",
+    business: "",
     email: "",
     phoneNumber: "",
   });
+
+  console.log(responses , 'ddddddddddddddd')
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
         const response = await axios.get(
-          "https://api.360xpertsolutions.com/api/xpert-consultation-netsuites?sort=id:asc"
+          "https://api.360xpertsolutions.com/api/xpert-consultation-netsuites"
         );
         setData(response.data);
       } catch (error) {
@@ -33,15 +38,18 @@ export default function Chat({ onSubmit }) {
 
   const HandleSubmit = async () => {
     try {
-      console.log("Submitting:", responses); // Debugging log
+      // console.log("Submitting:", responses);
 
       const payload = {
         data: {
-          Email: responses.email,
-          PhoneNumber: responses.phoneNumber,
-          FullName: responses.fullName,
+          email: responses.email,
+          phoneNumber: responses.phoneNumber,
+          fullName: responses.fullName,
+          companyName: response.companyName,
         },
       };
+
+      // console.log(response, 'payloadddd')
 
       const response = await axios.post(
         "https://api.360xpertsolutions.com/api/xpert-consultation-netsuite-responses",
@@ -198,6 +206,5 @@ export default function Chat({ onSubmit }) {
         <SuccessModal isOpen={isModalOpen} onClose={closeModal} />
       </div>
     </div>
-    // ll
   );
 }

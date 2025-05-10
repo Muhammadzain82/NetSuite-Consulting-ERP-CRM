@@ -82,6 +82,15 @@ const Navbar = () => {
                     Testimonials
                   </a>
                 </li>
+
+                <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
+                  <a
+                    href="#Blogs"
+                    onClick={(e) => scrollToSection(e, "Blogs")}
+                  >
+                    Blogs
+                  </a>
+                </li>
               </ul>
 
               <Button
@@ -152,11 +161,20 @@ const Navbar = () => {
                   Testimonials
                 </a>
               </li>
+
+              <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
+                <a
+                  href="#Blogs"
+                  onClick={(e) => scrollToSection(e, "Blogs")}
+                >
+                  Blogs
+                </a>
+              </li>
             </ul>
 
             <Button
-              bgColor={"bg-gradient-to-r from-[#0B56E0] to-[#367CFF]"}
-              textColor={"text-white"}
+              bgcolor={"bg-gradient-to-r from-[#0B56E0] to-[#367CFF]"}
+              textcolor={"text-white"}
               value={"Book Consultation"}
               round={"lg"}
               onClick={() => setIsModalOpen(true)}

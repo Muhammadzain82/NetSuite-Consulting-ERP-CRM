@@ -9,9 +9,9 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "700"],
 });
 
-const Button = ({ value, bgColor, textColor, className, onClick }) => {
-  const bgClass = bgColor || "bg-gradient-to-r from-blue-500 to-blue-700";
-  const textClass = textColor || "text-white";
+const Button = ({ value, bgcolor, textcolor, className, onClick }) => {
+  const bgClass = bgcolor || "bg-gradient-to-r from-blue-500 to-blue-700";
+  const textClass = textcolor || "text-white";
 
   return (
     <motion.button

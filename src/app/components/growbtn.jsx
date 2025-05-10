@@ -16,8 +16,8 @@ const Growbtn = () => {
         className="absolute -top-5 -right-5"
       />
       <div
-        bgColor="bg-[#FBFBFB]"
-        textColor="text-[#0B56E0]"
+        bgcolor="bg-[#FBFBFB]"
+        textcolor="text-[#0B56E0]"
         className="border border-[#ECECEC] p-2 mb-5 rounded-b-full rounded-l-full text-xs"
       >
         Grow with NetSuite
