@@ -1,36 +1,39 @@
-// 'use client'
+// "use client";
 // import Image from "next/image";
-// // import WaveForm from "./WaveForm";
-
-// export default function Blogs() {
-//   return (
-//     <section className="relative flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 sm:px-6 lg:px-8 mt-20 overflow-hidden">
-//       <div className="absolute w-full h-full mt-32 ">
-//         {/* <WaveForm/> */}
-//       </div>
-//       <div className="text-center max-w-4xl mx-auto">
-//         <h1 className="font-['Clash_Display'] font-medium text-5xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 bg-clip-text text-transparent bg-white">
-//           Excellence in Software
-//         </h1>
-//         <h1 className="font-['Clash_Display'] font-medium text-5xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 bg-clip-text text-transparent bg-white">
-//           Development
-//         </h1>
-//         <p className="text-sm sm:text-base md:text-lg mb-12 text-white font-[Clash_Display]">
-//           Explore our finest projects that highlight 360XpertSolution&apos;s
-//           dedication to
-//           <br />
-//           quality, innovation, and technical excellence in software development
-//         </p>
-//       </div>
-//     </section>
-//   );
-// }
-
-// import Image from "next/image"
-// import Link from "next/link"
-// import { ChevronRight } from "lucide-react"
+// import Link from "next/link";
+// import { ChevronRight } from "lucide-react";
+// import { useEffect, useState } from "react";
 
 // export default function Blog() {
+//   const [blogs, setBlogs] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     const fetchBlogs = async () => {
+//       try {
+//         setLoading(true);
+//         const response = await fetch("https://api.360xpertsolutions.com/api/blog-pages");
+
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+
+//         const data = await response.json();
+//         setBlogs(data.data || []);
+//         setError(null);
+//       } catch (err) {
+//         console.error("Error fetching blogs:", err);
+//         setError("Failed to load blogs. Please try again later.");
+//         setBlogs([]);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchBlogs();
+//   }, []);
+
 //   return (
 //     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 //       {/* Top section */}
@@ -40,14 +43,14 @@
 //             href="#"
 //             className="inline-flex items-center px-4 py-2 rounded-full bg-white text-blue-600 font-medium shadow-sm border border-gray-200 hover:bg-gray-50 transition-colors"
 //           >
-//             New &amp; Blogs
+//             News & Blogs
 //           </Link>
 //         </div>
 
 //         <div className="mt-8 flex justify-between items-start">
 //           <div className="max-w-4xl">
 //             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-//               Let's Talk NetSuite <span className="text-black">Tips, Trends &amp; Tutorials</span>
+//               Let's Talk NetSuite <span className="text-black">Tips, Trends & Tutorials</span>
 //             </h1>
 //             <p className="text-xl text-gray-600">
 //               Stay ahead in the world of ERP with expert insights, practical tips, and the latest updates on NetSuite
@@ -63,73 +66,71 @@
 //         </div>
 //       </div>
 
+//       {/* Loading state */}
+//       {loading && (
+//         <div className="flex justify-center items-center min-h-[300px]">
+//           <div className="animate-pulse text-gray-500">Loading blogs...</div>
+//         </div>
+//       )}
+
+//       {/* Error state */}
+//       {error && (
+//         <div className="flex justify-center items-center min-h-[300px]">
+//           <div className="text-red-500">{error}</div>
+//         </div>
+//       )}
+
+//       {/* Empty state */}
+//       {!loading && !error && blogs.length === 0 && (
+//         <div className="flex justify-center items-center min-h-[300px]">
+//           <div className="text-gray-500">No blogs available</div>
+//         </div>
+//       )}
+
 //       {/* Cards section */}
 //       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-//         {/* Card 1 */}
-//         {/* <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//           <div className="p-4 h-64 relative">
-//             <Image
-//               src="/placeholder.svg?height=400&width=600"
-//               alt="NetSuite Payroll Dashboard"
-//               fill
-//               className="object-cover rounded-lg"
-//             />
-//           </div>
-//           <div className="p-6">
-//             <h2 className="text-2xl font-bold text-gray-900 mb-4">Comprehensive ERP/CRM Services</h2>
-//             <p className="text-gray-600 mb-4">
-//               Streamline your business processes with scalable ERP/CRM solutions that adapt to your evolving needs.
-//             </p>
-//             <Link href="#" className="text-blue-600 font-medium hover:text-blue-800 transition-colors">
-//               Read More
-//             </Link>
-//           </div>
-//         </div> */}
+//         {blogs.map((blog) => {
+//           const imageUrl = blog?.attributes?.featuredImage?.data?.attributes?.url;
+//           const altText = blog?.attributes?.featuredImage?.data?.attributes?.alternativeText || blog.attributes.title;
 
-//         {/* Card 2 */}
-//         {/* <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//           <div className="p-4 h-64 relative">
-//             <Image
-//               src="/placeholder.svg?height=400&width=600"
-//               alt="NetSuite Dashboard Interface"
-//               fill
-//               className="object-cover rounded-lg"
-//             />
-//           </div>
-//           <div className="p-6">
-//             <h2 className="text-2xl font-bold text-gray-900 mb-4">Comprehensive ERP/CRM Services</h2>
-//             <p className="text-gray-600 mb-4">
-//               Streamline your business processes with scalable ERP/CRM solutions that adapt to your evolving needs.
-//             </p>
-//             <Link href="#" className="text-blue-600 font-medium hover:text-blue-800 transition-colors">
-//               Read More
-//             </Link>
-//           </div>
-//         </div> */}
-
-//         {/* Card 3 */}
-//         {/* <div className="bg-white rounded-lg shadow-md overflow-hidden">
-//           <div className="p-4 h-64 relative">
-//             <Image
-//               src="/placeholder.svg?height=400&width=600"
-//               alt="NetSuite Financial Dashboard"
-//               fill
-//               className="object-cover rounded-lg"
-//             />
-//           </div>
-//           <div className="p-6">
-//             <h2 className="text-2xl font-bold text-gray-900 mb-4">Comprehensive ERP/CRM Services</h2>
-//             <p className="text-gray-600 mb-4">
-//               Streamline your business processes with scalable ERP/CRM solutions that adapt to your evolving needs.
-//             </p>
-//             <Link href="#" className="text-blue-600 font-medium hover:text-blue-800 transition-colors">
-//               Read More
-//             </Link>
-//           </div>
-//         </div> */}
+//           return (
+//             <div
+//               key={blog.id}
+//               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" id="Blogs">
+//               <div className="p-4 h-64 relative">
+//                 {imageUrl ? (
+//                   <Image
+//                     src={imageUrl}
+//                     alt={altText}
+//                     fill
+//                     className="object-cover rounded-lg"
+//                   />
+//                 ) : (
+//                   <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
+//                     <span className="text-gray-500"></span>
+//                   </div>
+//                 )}
+//               </div>
+//               <div className="p-6">
+//                 <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
+//                   {blog.attributes.title}
+//                 </h2>
+//                 <p className="text-gray-600 mb-4 line-clamp-3">
+//                   {blog.attributes.description || "No description available"}
+//                 </p>
+//                 <Link
+//                   href={`/blog/${blog.attributes.slug || blog.id}`}
+//                   className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center"
+//                 >
+//                   Read More <ChevronRight className="w-4 h-4 ml-1" />
+//                 </Link>
+//               </div>
+//             </div>
+//           );
+//         })}
 //       </div>
 //     </div>
-//   )
+//   );
 // }
 
 "use client";
@@ -224,14 +225,15 @@ export default function Blog() {
       {/* Cards section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {blogs.map((blog) => {
-          const imageUrl = blog?.attributes?.featuredImage?.data?.attributes?.url;
-          const altText =
-            blog?.attributes?.featuredImage?.data?.attributes?.alternativeText || blog.attributes.title;
+          const { id, attributes } = blog;
+          const imageUrl = attributes?.image?.data?.attributes?.url || "";
+          const altText = attributes?.image?.data?.attributes?.alternativeText || "Blog Image";
 
           return (
             <div
-              key={blog.id}
+              key={id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              id="Blogs"
             >
               <div className="p-4 h-64 relative">
                 {imageUrl ? (
@@ -249,13 +251,13 @@ export default function Blog() {
               </div>
               <div className="p-6">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
-                  {blog.attributes.title}
+                  {attributes.title}
                 </h2>
                 <p className="text-gray-600 mb-4 line-clamp-3">
-                  {blog.attributes.description || "No description available"}
+                  {attributes.description || "No description available"}
                 </p>
                 <Link
-                  href={`/blog/${blog.attributes.slug || blog.id}`}
+                  href={`/blog/${attributes.slug || id}`}
                   className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center"
                 >
                   Read More <ChevronRight className="w-4 h-4 ml-1" />
