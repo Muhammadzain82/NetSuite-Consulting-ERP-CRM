@@ -148,13 +148,16 @@ export default function Blog() {
     const fetchBlogs = async () => {
       try {
         setLoading(true);
-        const response = await fetch("https://api.360xpertsolutions.com/api/blog-pages");
+        const response = await fetch(
+          "https://api.360xpertsolutions.com/api/blog-pages"
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
+        console.log("Blogs data:", data);
         setBlogs(data.data || []);
         setError(null);
       } catch (err) {
@@ -185,10 +188,12 @@ export default function Blog() {
         <div className="mt-8 flex justify-between items-start">
           <div className="max-w-4xl">
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-              Let's Talk NetSuite <span className="text-black">Tips, Trends & Tutorials</span>
+              Let's Talk NetSuite{" "}
+              <span className="text-black">Tips, Trends & Tutorials</span>
             </h1>
             <p className="text-xl text-gray-600">
-              Stay ahead in the world of ERP with expert insights, practical tips, and the latest updates on NetSuite
+              Stay ahead in the world of ERP with expert insights, practical
+              tips, and the latest updates on NetSuite
             </p>
           </div>
 
@@ -222,42 +227,53 @@ export default function Blog() {
         </div>
       )}
 
-      {/* Cards section */}
+      {/* Cards section - Simplified to only show image, title, description, and Read More */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {blogs.map((blog) => {
-          const { id, attributes } = blog;
-          const imageUrl = attributes?.image?.data?.attributes?.url || "";
-          const altText = attributes?.image?.data?.attributes?.alternativeText || "Blog Image";
+          // Get the image URL directly from the content array
+          const imageUrl = blog?.attributes?.content?.[0]?.image?.url;
+
+          // If the URL doesn't start with http, prepend the API domain
+          const fullImageUrl = imageUrl
+            ? imageUrl.startsWith("http")
+              ? imageUrl
+              : `https://api.360xpertsolutions.com${imageUrl}`
+            : null;
 
           return (
             <div
-              key={id}
+              key={blog.id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
               id="Blogs"
             >
               <div className="p-4 h-64 relative">
-                {imageUrl ? (
+                {fullImageUrl ? (
                   <Image
-                    src={imageUrl}
-                    alt={altText}
+                    src={fullImageUrl || "/placeholder.svg"}
+                    alt={blog.attributes.title || "Blog image"}
                     fill
                     className="object-cover rounded-lg"
                   />
                 ) : (
                   <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
-                    <span className="text-gray-500">No image</span>
+                    <span className="text-gray-500">No image available</span>
                   </div>
                 )}
               </div>
               <div className="p-6">
+                {/* Only show title */}
                 <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
-                  {attributes.title}
+                  {blog.attributes.title}
                 </h2>
+
+                {/* Only show description */}
                 <p className="text-gray-600 mb-4 line-clamp-3">
-                  {attributes.description || "No description available"}
+                  {blog.attributes.description || "No description available"}
                 </p>
+
+                {/* Read More button */}
                 <Link
-                  href={`/blog/${attributes.slug || id}`}
+                  href={`/blog/${blog.attributes.slug || blog.id}`}
                   className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center"
                 >
                   Read More <ChevronRight className="w-4 h-4 ml-1" />
