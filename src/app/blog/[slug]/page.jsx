@@ -96,14 +96,15 @@
 import React from "react";
 import Header from "../../components/header";
 import Image from "next/image";
-import { useEffect, useState, use } from "react";
+import { useEffect, useState } from "react";
 import Experts from "../../components/experts";
 import Blog from "../../components/blog";
 import Chatform from "../../components/Chatform";
 import Footer from "../../components/footer";
 
 export default function BlogDetail({ params }) {
-  const {slug} = React.use(params);
+  // Unwrap the params promise using React.use()
+  const { slug } = React.use(params);
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -135,6 +136,7 @@ export default function BlogDetail({ params }) {
     fetchBlogDetail();
   }, [slug]);
 
+
   if (loading) {
     return (
       <div className="p-6 flex justify-center items-center min-h-[300px]">
@@ -159,54 +161,99 @@ export default function BlogDetail({ params }) {
     );
   }
 
-  const { title, description, content } = blog.attributes;
+  const { title, description, content, publishedAt } = blog.attributes;
+  const publishedDate = new Date(publishedAt).toLocaleDateString();
+
+  const renderContent = (contentItem, index) => {
+    // Handle images
+    if (contentItem.type === "image" && contentItem.image) {
+      return (
+        <div key={index} className="relative w-full h-80 mb-6">
+          <Image
+            src={contentItem.image.url}
+            alt={contentItem.image.alternativeText || "Blog Image"}
+            width={800}
+            height={450}
+            className="w-full h-full object-cover rounded-lg shadow-lg"
+          />
+        </div>
+      );
+    }
+
+    // Handle paragraphs
+    if (contentItem.type === "paragraph") {
+      return (
+        <p key={index} className="text-gray-700 leading-relaxed mb-4">
+          {contentItem.children.map((child, childIndex) => {
+            if (child.text.includes("##")) {
+              return (
+                <h2 key={childIndex} className="text-2xl font-bold my-4">
+                  {child.text.replace("##", "")}
+                </h2>
+              );
+            }
+            return (
+              <React.Fragment key={childIndex}>
+                {child.text.split("\n").map((text, i) => (
+                  <React.Fragment key={i}>
+                    {i > 0 && <br />}
+                    {text}
+                  </React.Fragment>
+                ))}
+              </React.Fragment>
+            );
+          })}
+        </p>
+      );
+    }
+
+    // Handle headings
+    if (contentItem.type === "heading") {
+      const HeadingTag = `h${contentItem.level}`;
+      return (
+        <HeadingTag
+          key={index}
+          className={`text-${contentItem.level === 3 ? 'xl' : '2xl'} font-bold my-4`}
+        >
+          {contentItem.children[0].text}
+        </HeadingTag>
+      );
+    }
+
+    // Handle lists
+    if (contentItem.type === "list") {
+      const ListTag = contentItem.format === "ordered" ? "ol" : "ul";
+      return (
+        <ListTag key={index} className="list-disc pl-6 mb-4">
+          {contentItem.children.map((listItem, liIndex) => (
+            <li key={liIndex} className="mb-2">
+              {listItem.children.map((child, childIndex) => (
+                <React.Fragment key={childIndex}>
+                  {child.bold ? <strong>{child.text}</strong> : child.text}
+                </React.Fragment>
+              ))}
+            </li>
+          ))}
+        </ListTag>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <div className="p-6">
       <Header />
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-4">{title}</h1>
+        <h1 className="text-4xl font-bold mb-2">{title}</h1>
+        <p className="text-gray-500 mb-6">Published on: {publishedDate}</p>
+        <p className="text-gray-600 mb-6 text-lg">{description}</p>
 
-         <p className="text-gray-600 mb-6">{description}</p>
-
-        {Array.isArray(content) && content.length > 0 && content[0].type === "image" && content[0].image && (
-          <div className="relative w-full h-80 mb-6">
-            <Image
-              src={content[0].image.url}
-              alt={content[0].image.alternativeText || "Blog Image"}
-              width={800}
-              height={450}
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-        )}
-
-       
-        <div className="space-y-6">
-          {blog.attributes.content.map((content, index) => {
-              if (index === 0 && content.type === "image") return null;
-
-              return (
-                <div key={index} className="mb-4">
-                  {content.type === "image" && content.image && (
-                    <div className="relative w-full h-80 mb-4">
-                      <Image
-                        src={content.image.url}
-                        alt={content.image.alternativeText || "Blog Image"}
-                        width={800}
-                        height={450}
-                        className="w-full h-full object-cover rounded-lg shadow-lg"
-                      />
-                    </div>
-                  )}
-
-                  {content.content === "text" && (
-                    <p className="text-gray-700 leading-relaxed">{content.text}</p>
-                  )}
-                </div>
-              );
-            })}
-        </div>
+        {content.map((contentItem, index) => (
+          <React.Fragment key={index}>
+            {renderContent(contentItem, index)}
+          </React.Fragment>
+        ))}
       </div>
       <Blog />
       <Experts />
