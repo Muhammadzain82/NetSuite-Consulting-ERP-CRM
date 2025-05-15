@@ -103,7 +103,7 @@ export default function Modal({ isOpen, onClose, children }) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h2 className="text-blue-800 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-1 sm:px-2">
+                <h2 className="text-[#367CFF] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-1 sm:px-2">
                   NetSuite Consulting
                 </h2>
               </motion.div>
