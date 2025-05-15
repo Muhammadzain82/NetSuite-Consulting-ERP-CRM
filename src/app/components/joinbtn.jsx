@@ -11,7 +11,7 @@ const Joinbtn = () => {
   return (
     <div className={`${dmSans.className} relative inline-block`}>
       <img
-        src="./images/Vector.png"
+        src="/images/Vector.png"
         alt="Arrow"
         className="absolute -top-5 -left-5"
       />
