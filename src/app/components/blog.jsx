@@ -243,7 +243,7 @@ export default function Blog() {
           return (
             <div
               key={blog.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              className="bg-white rounded-lg shadow-md overflow-hidden"
               id="Blogs"
             >
               <div className="p-4 h-64 relative">

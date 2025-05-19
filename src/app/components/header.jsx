@@ -4,6 +4,7 @@ import Button from "./button";
 import { DM_Sans } from "next/font/google";
 import Modal from "./Modal";
 import Chat from "./chat";
+import { Link } from "lucide-react";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -43,41 +44,45 @@ const Navbar = () => {
         <div className="max-w-full sm:px-6 lg:px-8 py-5 text-textcolor">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <img
-                src="/images/logo.png"
-                alt="Your company logo"
-                className="w-32"
-              />
+              <a href="/">
+               <img
+                 src="/images/logo.png"
+                 alt="Your company logo"
+                 className="w-32 cursor-pointer"
+                />
+              </a>
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center justify-between w-full">
                 <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
                 <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                  <a href="#home" onClick={(e) => scrollToSection(e, "home")}>
+                  <a href="/"
+                    // onClick={(e) => scrollToSection(e, "home")}
+                  >
                     Home
                   </a>
                 </li>
                 <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
                   <a
-                    href="#services"
-                    onClick={(e) => scrollToSection(e, "services")}
+                    href="/"
+                    // onClick={(e) => scrollToSection(e, "services")}
                   >
                     Services
                   </a>
                 </li>
                 <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
                   <a
-                    href="#features"
-                    onClick={(e) => scrollToSection(e, "features")}
+                    href="/"
+                    // onClick={(e) => scrollToSection(e, "features")}
                   >
                     Features
                   </a>
                 </li>
                 <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
                   <a
-                    href="#testimonials"
-                    onClick={(e) => scrollToSection(e, "testimonials")}
+                    href="/"
+                    // onClick={(e) => scrollToSection(e, "testimonials")}
                   >
                     Testimonials
                   </a>
@@ -85,8 +90,8 @@ const Navbar = () => {
 
                 <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
                   <a
-                    href="#Blogs"
-                    onClick={(e) => scrollToSection(e, "Blogs")}
+                    href="/"
+                    // onClick={(e) => scrollToSection(e, "Blogs")}
                   >
                     Blogs
                   </a>
@@ -133,7 +138,9 @@ const Navbar = () => {
           >
             <ul className="py-2 space-y-5 text-center">
               <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                <a href="#home" onClick={(e) => scrollToSection(e, "home")}>
+                <a href="#home"
+                  onClick={(e) => scrollToSection(e, "home")}
+                >  
                   Home
                 </a>
               </li>
