@@ -56,43 +56,28 @@ const Navbar = () => {
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center justify-between w-full">
                 <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
-                <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                  <a href="/"
-                    // onClick={(e) => scrollToSection(e, "home")}
-                  >
+                <li>
+                  <a href="/" className="hover:text-blue-600 transition-colors duration-300">
                     Home
                   </a>
                 </li>
-                <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                  <a
-                    href="/"
-                    // onClick={(e) => scrollToSection(e, "services")}
-                  >
+                <li>
+                  <a href="/" className="hover:text-blue-600 transition-colors duration-300">
                     Services
                   </a>
                 </li>
-                <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                  <a
-                    href="/"
-                    // onClick={(e) => scrollToSection(e, "features")}
-                  >
+                <li>
+                  <a href="/" className="hover:text-blue-600 transition-colors duration-300">
                     Features
                   </a>
                 </li>
-                <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                  <a
-                    href="/"
-                    // onClick={(e) => scrollToSection(e, "testimonials")}
-                  >
+                <li>
+                  <a href="/" className="hover:text-blue-600 transition-colors duration-300">
                     Testimonials
                   </a>
                 </li>
-
-                <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                  <a
-                    href="/"
-                    // onClick={(e) => scrollToSection(e, "Blogs")}
-                  >
+                <li>
+                  <a href="/" className="hover:text-blue-600 transition-colors duration-300">
                     Blogs
                   </a>
                 </li>
@@ -137,42 +122,47 @@ const Navbar = () => {
             } flex flex-col items-center space-y-4 py-4`}
           >
             <ul className="py-2 space-y-5 text-center">
-              <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                <a href="#home"
+              <li>
+                <a 
+                  href="#home" 
                   onClick={(e) => scrollToSection(e, "home")}
+                  className="hover:text-blue-600 transition-colors duration-300"
                 >  
                   Home
                 </a>
               </li>
-              <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                <a
-                  href="#services"
+              <li>
+                <a 
+                  href="#services" 
                   onClick={(e) => scrollToSection(e, "services")}
+                  className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Services
                 </a>
               </li>
-              <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                <a
-                  href="#features"
+              <li>
+                <a 
+                  href="#features" 
                   onClick={(e) => scrollToSection(e, "features")}
+                  className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Features
                 </a>
               </li>
-              <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                <a
-                  href="#testimonials"
+              <li>
+                <a 
+                  href="#testimonials" 
                   onClick={(e) => scrollToSection(e, "testimonials")}
+                  className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Testimonials
                 </a>
               </li>
-
-              <li className="transform transition-all duration-300 hover:scale-90 hover:text-sm">
-                <a
-                  href="#Blogs"
+              <li>
+                <a 
+                  href="#Blogs" 
                   onClick={(e) => scrollToSection(e, "Blogs")}
+                  className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Blogs
                 </a>
