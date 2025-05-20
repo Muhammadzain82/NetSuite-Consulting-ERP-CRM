@@ -181,6 +181,7 @@ import Chatform from "../../components/Chatform";
 import Footer from "../../components/footer";
 import { motion } from "framer-motion";
 import Joinbtn from "../../components/joinbtn";
+import Head from "next/head";
 
 export default function BlogDetail({ params }) {
   // Unwrap the params promise using React.use()
