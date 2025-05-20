@@ -1,143 +1,31 @@
-// "use client";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { ChevronRight } from "lucide-react";
-// import { useEffect, useState } from "react";
-
-// export default function Blog() {
-//   const [blogs, setBlogs] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     const fetchBlogs = async () => {
-//       try {
-//         setLoading(true);
-//         const response = await fetch("https://api.360xpertsolutions.com/api/blog-pages");
-
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-
-//         const data = await response.json();
-//         setBlogs(data.data || []);
-//         setError(null);
-//       } catch (err) {
-//         console.error("Error fetching blogs:", err);
-//         setError("Failed to load blogs. Please try again later.");
-//         setBlogs([]);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchBlogs();
-//   }, []);
-
-//   return (
-//     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-//       {/* Top section */}
-//       <div className="mb-12">
-//         <div className="inline-block">
-//           <Link
-//             href="#"
-//             className="inline-flex items-center px-4 py-2 rounded-full bg-white text-blue-600 font-medium shadow-sm border border-gray-200 hover:bg-gray-50 transition-colors"
-//           >
-//             News & Blogs
-//           </Link>
-//         </div>
-
-//         <div className="mt-8 flex justify-between items-start">
-//           <div className="max-w-4xl">
-//             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-//               Let's Talk NetSuite <span className="text-black">Tips, Trends & Tutorials</span>
-//             </h1>
-//             <p className="text-xl text-gray-600">
-//               Stay ahead in the world of ERP with expert insights, practical tips, and the latest updates on NetSuite
-//             </p>
-//           </div>
-
-//           <Link
-//             href="#"
-//             className="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-//           >
-//             <ChevronRight className="w-6 h-6" />
-//           </Link>
-//         </div>
-//       </div>
-
-//       {/* Loading state */}
-//       {loading && (
-//         <div className="flex justify-center items-center min-h-[300px]">
-//           <div className="animate-pulse text-gray-500">Loading blogs...</div>
-//         </div>
-//       )}
-
-//       {/* Error state */}
-//       {error && (
-//         <div className="flex justify-center items-center min-h-[300px]">
-//           <div className="text-red-500">{error}</div>
-//         </div>
-//       )}
-
-//       {/* Empty state */}
-//       {!loading && !error && blogs.length === 0 && (
-//         <div className="flex justify-center items-center min-h-[300px]">
-//           <div className="text-gray-500">No blogs available</div>
-//         </div>
-//       )}
-
-//       {/* Cards section */}
-//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-//         {blogs.map((blog) => {
-//           const imageUrl = blog?.attributes?.featuredImage?.data?.attributes?.url;
-//           const altText = blog?.attributes?.featuredImage?.data?.attributes?.alternativeText || blog.attributes.title;
-
-//           return (
-//             <div
-//               key={blog.id}
-//               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow" id="Blogs">
-//               <div className="p-4 h-64 relative">
-//                 {imageUrl ? (
-//                   <Image
-//                     src={imageUrl}
-//                     alt={altText}
-//                     fill
-//                     className="object-cover rounded-lg"
-//                   />
-//                 ) : (
-//                   <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
-//                     <span className="text-gray-500"></span>
-//                   </div>
-//                 )}
-//               </div>
-//               <div className="p-6">
-//                 <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
-//                   {blog.attributes.title}
-//                 </h2>
-//                 <p className="text-gray-600 mb-4 line-clamp-3">
-//                   {blog.attributes.description || "No description available"}
-//                 </p>
-//                 <Link
-//                   href={`/blog/${blog.attributes.slug || blog.id}`}
-//                   className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center"
-//                 >
-//                   Read More <ChevronRight className="w-4 h-4 ml-1" />
-//                 </Link>
-//               </div>
-//             </div>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// }
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import Head from "next/head";
+
+function BlogPage({ blog }) {
+  return (
+    <>
+      <Head>
+        <title>{blog.title} | Netsuit Expert</title>
+        <meta name="description" content={blog.description} />
+
+        {/* Open Graph Tags */}
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.description} />
+        <meta property="og:image" content={blog.imageUrl} />
+        <meta property="og:url" content={`https://netsuitexpert.com/blog/${blog.id}`} />
+        <meta property="og:type" content="article" />
+      </Head>
+
+      {/* Blog Content */}
+      <h1>{blog.title}</h1>
+      <p>{blog.content}</p>
+    </>
+  );
+}
 
 export default function Blog() {
   const [blogs, setBlogs] = useState([]);

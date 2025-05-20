@@ -57,8 +57,8 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center justify-between w-full">
                 <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
                 <li>
-                  <a href="#home"
-                    onClick={(e) => scrollToSection(e, "home")} 
+                  <a href="/"
+                    // onClick={(e) => scrollToSection(e, "home")} 
                     className="hover:text-blue-600 transition-colors duration-300">
                     Home
                   </a>
@@ -84,8 +84,10 @@ const Navbar = () => {
                     Testimonials
                   </a>
                 </li>
-                <li className="hover:text-blue-600 transition-colors duration-300">
-                  <a href="#Blogs" onClick={(e) => scrollToSection(e, "Blogs")}>
+                <li>
+                  <a href="#blogs" 
+                    onClick={(e) => scrollToSection(e, "blogs")}
+                    className="hover:text-blue-600 transition-colors duration-300">
                     Blogs
                   </a>
                 </li>
@@ -132,8 +134,8 @@ const Navbar = () => {
             <ul className="py-2 space-y-5 text-center">
               <li>
                 <a 
-                  href="#home" 
-                  onClick={(e) => scrollToSection(e, "home")}
+                  href="/" 
+                //   onClick={(e) => scrollToSection(e, "home")}
                   className="hover:text-blue-600 transition-colors duration-300"
                 >  
                   Home
