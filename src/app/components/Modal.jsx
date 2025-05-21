@@ -121,13 +121,13 @@ export default function Modal({ isOpen, onClose, children }) {
               </span>{" "}
               Expert{" "}
               <motion.div
-                className="mt-1 sm:mt-2 md:mt-3 inline-block bg-white rounded-sm"
+                className="mt-1 sm:mt-2 md:mt-3 inline-block bg-white rounded-sm py-1 sm:py-2 md:py-3"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <h2 className="text-[#367CFF] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-1 sm:px-2">
-                  NetSuite Consulting
+                <h2 className="text-[#367CFF] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold px-3 sm:px-4">
+                 NetSuite Consulting
                 </h2>
               </motion.div>
             </motion.h1>

@@ -5,6 +5,7 @@ import { DM_Sans } from "next/font/google";
 import Modal from "./Modal";
 import Chat from "./chat";
 import { Link } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -14,28 +15,34 @@ const dmSans = DM_Sans({
 const Navbar = () => {
   const [isClick, setIsClick] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   const toggleNavbar = () => {
     setIsClick(!isClick);
   };
 
-  const scrollToSection = (e, id) => {
+  const handleNavigation = (e, id) => {
     e.preventDefault();
-    const element = document.getElementById(id);
-
-    if (element) {
-      const offset = 80;
-      const top = element.offsetTop - offset;
-
-      window.scrollTo({
-        top,
-        behavior: "smooth",
-      });
-
+    
+    // First navigate to home page
+    router.push("/");
+    
+    // Then scroll to the section after a small delay to allow page load
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 80;
+        const top = element.offsetTop - offset;
+        window.scrollTo({
+          top,
+          behavior: "smooth",
+        });
+      }
+      
       if (isClick) {
         setIsClick(false);
       }
-    }
+    }, 100);
   };
 
   return (
@@ -45,49 +52,58 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
               <a href="/">
-               <img
-                 src="/images/logo.png"
-                 alt="Your company logo"
-                 className="w-32 cursor-pointer"
+                <img
+                  src="/images/logo.png"
+                  alt="Your company logo"
+                  className="w-32 cursor-pointer"
                 />
               </a>
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center justify-between w-full">
-                <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
+              <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
                 <li>
-                  <a href="/"
-                    // onClick={(e) => scrollToSection(e, "home")} 
-                    className="hover:text-blue-600 transition-colors duration-300">
+                  <a 
+                    href="/" 
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" 
-                    onClick={(e) => scrollToSection(e, "services")}
-                    className="hover:text-blue-600 transition-colors duration-300">
+                  <a 
+                    href="#services" 
+                    onClick={(e) => handleNavigation(e, "services")}
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#features" 
-                    onClick={(e) => scrollToSection(e, "features")}
-                    className="hover:text-blue-600 transition-colors duration-300">
+                  <a 
+                    href="#features" 
+                    onClick={(e) => handleNavigation(e, "features")}
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials"
-                    onClick={(e) => scrollToSection(e, "testimonials")} 
-                    className="hover:text-blue-600 transition-colors duration-300">
+                  <a 
+                    href="#testimonials"
+                    onClick={(e) => handleNavigation(e, "testimonials")} 
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Testimonials
                   </a>
                 </li>
                 <li>
-                  <a href="#blogs" 
-                    onClick={(e) => scrollToSection(e, "blogs")}
-                    className="hover:text-blue-600 transition-colors duration-300">
+                  <a 
+                    href="#blogs" 
+                    onClick={(e) => handleNavigation(e, "blogs")}
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Blogs
                   </a>
                 </li>
@@ -135,7 +151,6 @@ const Navbar = () => {
               <li>
                 <a 
                   href="/" 
-                //   onClick={(e) => scrollToSection(e, "home")}
                   className="hover:text-blue-600 transition-colors duration-300"
                 >  
                   Home
@@ -144,7 +159,7 @@ const Navbar = () => {
               <li>
                 <a 
                   href="#services" 
-                  onClick={(e) => scrollToSection(e, "services")}
+                  onClick={(e) => handleNavigation(e, "services")}
                   className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Services
@@ -153,7 +168,7 @@ const Navbar = () => {
               <li>
                 <a 
                   href="#features" 
-                  onClick={(e) => scrollToSection(e, "features")}
+                  onClick={(e) => handleNavigation(e, "features")}
                   className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Features
@@ -162,7 +177,7 @@ const Navbar = () => {
               <li>
                 <a 
                   href="#testimonials" 
-                  onClick={(e) => scrollToSection(e, "testimonials")}
+                  onClick={(e) => handleNavigation(e, "testimonials")}
                   className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Testimonials
@@ -171,7 +186,7 @@ const Navbar = () => {
               <li>
                 <a 
                   href="#Blogs" 
-                  onClick={(e) => scrollToSection(e, "Blogs")}
+                  onClick={(e) => handleNavigation(e, "blogs")}
                   className="hover:text-blue-600 transition-colors duration-300"
                 >
                   Blogs
@@ -180,11 +195,12 @@ const Navbar = () => {
             </ul>
 
             <Button
-              bgcolor={"bg-gradient-to-r from-[#0B56E0] to-[#367CFF]"}
-              textcolor={"text-white"}
               value={"Book Consultation"}
-              round={"lg"}
-              onClick={() => setIsModalOpen(true)}
+              className={"rounded-lg"}
+              onClick={() => {
+                setIsModalOpen(true);
+                setIsClick(false);
+              }}
             />
           </div>
         </div>

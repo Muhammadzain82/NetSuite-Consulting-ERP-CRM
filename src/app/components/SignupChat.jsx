@@ -52,14 +52,22 @@ export default function SignupChat({ shrink, onClose, setShrink }) {
   const [isTyping, setIsTyping] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const messagesEndRef = useRef(null);
+  const inputRef = useRef(null); // Ref for the input field
 
-   const scrollToBottom = () =>{
-    messagesEndRef.current?.scrollIntoView({behavior: "smooth"});
-   };
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
-   useEffect(() => {
+  useEffect(() => {
     scrollToBottom();
-   }, [currentStep, isTyping, validationErrors]);
+  }, [currentStep, isTyping, validationErrors]);
+
+  // Focus the input field when step changes or component mounts
+  useEffect(() => {
+    if (inputRef.current && !isTyping && currentStep < steps.length) {
+      inputRef.current.focus();
+    }
+  }, [currentStep, isTyping, steps.length]);
 
   // Fetch Steps Data
   useEffect(() => {
@@ -272,7 +280,7 @@ export default function SignupChat({ shrink, onClose, setShrink }) {
         {currentStep >= 0 && (
           <button
             onClick={() => setShrink(!shrink)}
-            className="text-[#3BAEEB] mt-8 bg-white rounded-full shadow-md md:p-3 p-2 mb-8 flex items-center gap-2 w-10 h-10 md:w-fit md:h-fit"
+            className="text-[#0B56E0] mt-8 bg-white rounded-full shadow-md md:p-3 p-2 mb-8 flex items-center gap-2 w-10 h-10 md:w-fit md:h-fit"
           >
             <IoIosArrowBack size={32} />
           </button>
@@ -329,6 +337,8 @@ export default function SignupChat({ shrink, onClose, setShrink }) {
                     {steps[currentStep]?.label}
                   </label>
                   <input
+                    ref={inputRef} // Add ref to input
+                    autoFocus // Add autoFocus prop
                     type={steps[currentStep]?.key === "email" ? "email" : 
                     steps[currentStep]?.key === "phoneNumber" ? "tel" : "text"}
                     placeholder={steps[currentStep]?.item}
@@ -365,18 +375,6 @@ export default function SignupChat({ shrink, onClose, setShrink }) {
                 </div>
               </div>
             )}
-
-            {/* Thank you message after submission */}
-            {/* {currentStep >= steps.length && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-center py-10"
-              >
-                <ChatMessage message="Thank you for your responses! We'll get back to you soon." />
-              </motion.div>
-            )} */}
           </div>
         </form>
       </div>
