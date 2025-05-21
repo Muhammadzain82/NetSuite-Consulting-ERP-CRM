@@ -172,7 +172,7 @@
 
 "use client";
 import React from "react";
-import Header from "../../components/header";
+import Header2 from "../../components/headers2";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Experts from "../../components/experts";
@@ -324,7 +324,7 @@ export default function BlogDetail({ params }) {
 
   return (
     <div className="p-6">
-      <Header />
+      <Header2 />
       <div className="max-w-full sm:px-8 lg:px-10 py-5 text-textcolor">
         <div className="max-w-5xl text-center mx-auto">
           <motion.div
