@@ -254,7 +254,7 @@ export default function SignupChat({ shrink, onClose, setShrink }) {
       >
         <div className="space-y-10">
           <button onClick={onClose}>
-            <Image src="/images/Logo.png" alt="Logo" width={140} height={100} />
+            <Image src="/images/logo.png" alt="Logo" width={140} height={100} />
           </button>
           <List
             height={330}

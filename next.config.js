@@ -7,7 +7,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'https://netsuitexpert.com/',
+        hostname: 'netsuitexpert.com',
       },
     ],
   },
