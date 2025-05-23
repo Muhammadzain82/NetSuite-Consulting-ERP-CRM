@@ -3,23 +3,10 @@
 // import Link from "next/link";
 // import { ChevronRight } from "lucide-react";
 // import { useEffect, useState } from "react";
-// import Head from "next/head";
 
 // function BlogPage({ blog }) {
 //   return (
 //     <>
-//       <Head>
-//         <title>{blog.title} | Netsuit Expert</title>
-//         <meta name="description" content={blog.description} />
-
-//         {/* Open Graph Tags */}
-//         <meta property="og:title" content={blog.title} />
-//         <meta property="og:description" content={blog.description} />
-//         <meta property="og:image" content={blog.imageUrl} />
-//         <meta property="og:url" content={`https://netsuitexpert.com/blog/${blog.id}`} />
-//         <meta property="og:type" content="article" />
-//       </Head>
-
 //       {/* Blog Content */}
 //       <h1>{blog.title}</h1>
 //       <p>{blog.content}</p>
@@ -76,7 +63,7 @@
 //         <div className="mt-8 flex justify-between items-start">
 //           <div className="max-w-4xl">
 //             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-//               Let's Talk NetSuite{" "}
+//               Let&apos;s Talk NetSuite{" "}
 //               <span className="text-black">Tips, Trends & Tutorials</span>
 //             </h1>
 //             <p className="text-xl text-gray-600">
@@ -137,10 +124,12 @@
 //               <div className="p-4 h-64 relative">
 //                 {fullImageUrl ? (
 //                   <Image
-//                     src={fullImageUrl || "/placeholder.svg"}
+//                     src={fullImageUrl}
 //                     alt={blog.attributes.title || "Blog image"}
 //                     fill
 //                     className="object-cover rounded-lg"
+//                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+//                     priority={false}
 //                   />
 //                 ) : (
 //                   <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
@@ -149,24 +138,27 @@
 //                 )}
 //               </div>
 //               <div className="p-6">
-//                 {/* Only show title */}
-//                 <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
-//                   {blog.attributes.title}
+//               {/* Wrap entire content in Link component */}
+//               <Link 
+//                href={`/blog/${blog.attributes.slug || blog.id}`}
+//                className="block group" // Make the link behave like a block element
+//               >
+//                {/* Only show title */}
+//                 <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors">
+//                  {blog.attributes.title}
 //                 </h2>
 
 //                 {/* Only show description */}
 //                 <p className="text-gray-600 mb-4 line-clamp-3">
-//                   {blog.attributes.description || "No description available"}
+//                  {blog.attributes.description || "No description available"}
 //                 </p>
 
-//                 {/* Read More button */}
-//                 <Link
-//                   href={`/blog/${blog.attributes.slug || blog.id}`}
-//                   className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center"
-//                 >
-//                   Read More <ChevronRight className="w-4 h-4 ml-1" />
-//                 </Link>
-//               </div>
+//                 {/* Read More button - now part of the clickable area */}
+//                 <div className="text-blue-600 font-medium group-hover:text-blue-800 transition-colors inline-flex items-center">
+//                  Read More <ChevronRight className="w-4 h-4 ml-1" />
+//                 </div>
+//               </Link>
+//              </div>
 //             </div>
 //           );
 //         })}
@@ -279,7 +271,7 @@ export default function Blog() {
         </div>
       )}
 
-      {/* Cards section - Simplified to only show image, title, description, and Read More */}
+      {/* Cards section */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
         {blogs.map((blog) => {
           // Get the image URL directly from the content array
@@ -291,6 +283,12 @@ export default function Blog() {
               ? imageUrl
               : `https://api.360xpertsolutions.com${imageUrl}`
             : null;
+
+          // Create a URL-friendly slug from the title
+          const slug = blog.attributes.title
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')  // Replace non-alphanumeric with dashes
+            .replace(/(^-|-$)/g, '');     // Remove leading/trailing dashes
 
           return (
             <div
@@ -315,27 +313,23 @@ export default function Blog() {
                 )}
               </div>
               <div className="p-6">
-              {/* Wrap entire content in Link component */}
-              <Link 
-               href={`/blog/${blog.attributes.slug || blog.id}`}
-               className="block group" // Make the link behave like a block element
-              >
-               {/* Only show title */}
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                 {blog.attributes.title}
-                </h2>
+                <Link 
+                  href={`/blog/${slug}`}  // Using the generated slug instead of ID
+                  className="block group"
+                >
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    {blog.attributes.title}
+                  </h2>
 
-                {/* Only show description */}
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                 {blog.attributes.description || "No description available"}
-                </p>
+                  <p className="text-gray-600 mb-4 line-clamp-3">
+                    {blog.attributes.description || "No description available"}
+                  </p>
 
-                {/* Read More button - now part of the clickable area */}
-                <div className="text-blue-600 font-medium group-hover:text-blue-800 transition-colors inline-flex items-center">
-                 Read More <ChevronRight className="w-4 h-4 ml-1" />
-                </div>
-              </Link>
-             </div>
+                  <div className="text-blue-600 font-medium group-hover:text-blue-800 transition-colors inline-flex items-center">
+                    Read More <ChevronRight className="w-4 h-4 ml-1" />
+                  </div>
+                </Link>
+              </div>
             </div>
           );
         })}
