@@ -315,24 +315,27 @@ export default function Blog() {
                 )}
               </div>
               <div className="p-6">
-                {/* Only show title */}
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2">
-                  {blog.attributes.title}
+              {/* Wrap entire content in Link component */}
+              <Link 
+               href={`/blog/${blog.attributes.slug || blog.id}`}
+               className="block group" // Make the link behave like a block element
+              >
+               {/* Only show title */}
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                 {blog.attributes.title}
                 </h2>
 
                 {/* Only show description */}
                 <p className="text-gray-600 mb-4 line-clamp-3">
-                  {blog.attributes.description || "No description available"}
+                 {blog.attributes.description || "No description available"}
                 </p>
 
-                {/* Read More button */}
-                <Link
-                  href={`/blog/${blog.attributes.slug || blog.id}`}
-                  className="text-blue-600 font-medium hover:text-blue-800 transition-colors inline-flex items-center"
-                >
-                  Read More <ChevronRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+                {/* Read More button - now part of the clickable area */}
+                <div className="text-blue-600 font-medium group-hover:text-blue-800 transition-colors inline-flex items-center">
+                 Read More <ChevronRight className="w-4 h-4 ml-1" />
+                </div>
+              </Link>
+             </div>
             </div>
           );
         })}

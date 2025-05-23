@@ -46,7 +46,7 @@ const Navbar = () => {
             <div className="flex-shrink-0">
               <a href="/">
                <img
-                 src="/images/Logo2.png"
+                 src="/images/logo.png"
                  alt="Your company logo"
                  className="w-32 cursor-pointer"
                 />
