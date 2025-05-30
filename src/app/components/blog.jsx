@@ -170,8 +170,8 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 function BlogPage({ blog }) {
   return (
@@ -187,6 +187,20 @@ export default function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const scrollRef = useRef();
+
+const scrollLeft = () => {
+  if (scrollRef.current) {
+    scrollRef.current.scrollBy({ left: -500, behavior: "smooth" });
+  }
+};
+
+const scrollRight = () => {
+  if (scrollRef.current) {
+    scrollRef.current.scrollBy({ left: 500, behavior: "smooth" });
+  }
+};
+
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -241,12 +255,7 @@ export default function Blog() {
             </p>
           </div>
 
-          <Link
-            href="#"
-            className="hidden sm:flex items-center justify-center w-12 h-12 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-colors"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </Link>
+          
         </div>
       </div>
 
@@ -272,68 +281,83 @@ export default function Blog() {
       )}
 
       {/* Cards section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-        {blogs.map((blog) => {
-          // Get the image URL directly from the content array
-          const imageUrl = blog?.attributes?.content?.[0]?.image?.url;
+     <div id="Blogs" className="relative mt-12" >
+  {/* Scroll Left Button */}
+  <button
+    onClick={scrollLeft}
+    
+    className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-blue-600 shadow rounded-full px-3 py-2.5 hover:bg-blue-700 transition text-white"
+    aria-label="Scroll Left"
+  >
+    <ChevronLeft className="w-6 h-7" />
+  </button>
 
-          // If the URL doesn't start with http, prepend the API domain
-          const fullImageUrl = imageUrl
-            ? imageUrl.startsWith("http")
-              ? imageUrl
-              : `https://api.360xpertsolutions.com${imageUrl}`
-            : null;
+  {/* Scrollable Cards */}
+  <div
+    ref={scrollRef}
+    className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide px-12"
+  >
+    {blogs.map((blog) => {
+      const imageUrl = blog?.attributes?.content?.[0]?.image?.url;
+      const fullImageUrl = imageUrl
+        ? imageUrl.startsWith("http")
+          ? imageUrl
+          : `https://api.360xpertsolutions.com${imageUrl}`
+        : null;
 
-          // Create a URL-friendly slug from the title
-          const slug = blog.attributes.title
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')  // Replace non-alphanumeric with dashes
-            .replace(/(^-|-$)/g, '');     // Remove leading/trailing dashes
+      const slug = blog.attributes.title
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
 
-          return (
-            <div
-              key={blog.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden"
-              id="Blogs"
-            >
-              <div className="p-4 h-64 relative">
-                {fullImageUrl ? (
-                  <Image
-                    src={fullImageUrl}
-                    alt={blog.attributes.title || "Blog image"}
-                    fill
-                    className="object-cover rounded-lg"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={false}
-                  />
-                ) : (
-                  <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
-                    <span className="text-gray-500">No image available</span>
-                  </div>
-                )}
+      return (
+        <div
+          key={blog.id}
+          className="snap-start bg-white rounded-lg shadow-md overflow-hidden min-w-[320px] max-w-[340px] mb-3 flex-shrink-0"
+        >
+          <div className="h-64  relative">
+            {fullImageUrl ? (
+              <Image
+                src={fullImageUrl}
+                alt={blog.attributes.title || "Blog image"}
+                fill
+                className="object-cover rounded-t-lg"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-t-lg">
+                <span className="text-gray-500 text-sm">No image available</span>
               </div>
-              <div className="p-6">
-                <Link 
-                  href={`/blog/${slug}`}  // Using the generated slug instead of ID
-                  className="block group"
-                >
-                  <h2 className="text-2xl font-bold text-gray-900 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                    {blog.attributes.title}
-                  </h2>
+            )}
+          </div>
+          <div className="p-4">
+            <Link href={`/blog/${slug}`} className="block group">
+              <h2 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-blue-600 transition">
+                {blog.attributes.title}
+              </h2>
+              <p className="text-sm text-gray-600 mt-2 line-clamp-3">
+                {blog.attributes.description || "No description available"}
+              </p>
+              <span className="mt-3 inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium transition">
+                Read More <ChevronRight className="w-4 h-4 ml-1" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      );
+    })}
+  </div>
 
-                  <p className="text-gray-600 mb-4 line-clamp-3">
-                    {blog.attributes.description || "No description available"}
-                  </p>
+  {/* Scroll Right Button */}
+  <button
+    onClick={scrollRight}
+    className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-blue-600 shadow rounded-full px-3 py-2.5 hover:bg-blue-700 transition text-white"
+    aria-label="Scroll Right"
+  >
+   <ChevronRight className="w-6 h-7" />
+  </button>
+</div>
 
-                  <div className="text-blue-600 font-medium group-hover:text-blue-800 transition-colors inline-flex items-center">
-                    Read More <ChevronRight className="w-4 h-4 ml-1" />
-                  </div>
-                </Link>
-              </div>
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 }
