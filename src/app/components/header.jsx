@@ -4,7 +4,7 @@ import Button from "./button";
 import { DM_Sans } from "next/font/google";
 import Modal from "./Modal";
 import Chat from "./chat";
-import { Link } from "lucide-react";
+import Image from "next/image";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -45,42 +45,52 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
               <a href="/">
-               <img
-                 src="/images/logo.png"
-                 alt="Your company logo"
-                 className="w-32 cursor-pointer"
+                <Image
+                  src="/images-webp/logo.webp"
+                  alt="Netsuite-logo"
+                  width={128}
+                  height={40}
+                  className="w-32 cursor-pointer"
                 />
               </a>
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center justify-between w-full">
-                <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
+              <ul className="flex gap-10 mx-auto text-lg bg-[#F7F8FC] text-[#181818] p-4 rounded-lg font-dm-sans">
                 <li>
-                  <a href="#home"
+                  <a 
+                    href="#home"
                     onClick={(e) => scrollToSection(e, "home")} 
-                    className="hover:text-blue-600 transition-colors duration-300">
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#services" 
+                  <a 
+                    href="#services" 
                     onClick={(e) => scrollToSection(e, "services")}
-                    className="hover:text-blue-600 transition-colors duration-300">
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Services
                   </a>
                 </li>
                 <li>
-                  <a href="#features" 
+                  <a 
+                    href="#features" 
                     onClick={(e) => scrollToSection(e, "features")}
-                    className="hover:text-blue-600 transition-colors duration-300">
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Features
                   </a>
                 </li>
                 <li>
-                  <a href="#testimonials"
+                  <a 
+                    href="#testimonials"
                     onClick={(e) => scrollToSection(e, "testimonials")} 
-                    className="hover:text-blue-600 transition-colors duration-300">
+                    className="hover:text-blue-600 transition-colors duration-300"
+                  >
                     Testimonials
                   </a>
                 </li>

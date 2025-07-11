@@ -13,7 +13,7 @@ const dmSans = DM_Sans({
 const testimonials = [
   {
     id: 1,
-    icon: "./images/icon.png",
+    icon: "./images-webp/icon.webp",
     text: "The level of professionalism and commitment this team brought to our project was outstanding. They went above and beyond to ensure every detail was perfect, and their innovative approach has made a lasting impact on our business operations.",
     name: "Mike Warren",
     role: "Product Developer at Webflow",
@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     id: 2,
-    icon: "./images/icon.png",
+    icon: "./images-webp/icon.webp",
     text: "This team has been instrumental in helping us achieve our goals. Their clear communication, problem-solving skills, and dedication to delivering quality results made all the difference. I would highly recommend their services to anyone.",
     name: "Micheal Jackson",
     role: "Founder, CEO",
@@ -29,7 +29,7 @@ const testimonials = [
   },
   {
     id: 3,
-    icon: "./images/icon.png",
+    icon: "./images-webp/icon.webp",
     text: "Working with this team was a fantastic experience! Their expertise, attention to detail, and dedication to delivering the best results exceeded our expectations. They truly understood our needs and provided innovative solutions that significantly improved our operations.",
     name: "Sara Khan",
     role: "Project Manager",
@@ -113,17 +113,17 @@ const Testimonal = () => {
                 <button className="bg-[white] text-[#0B56E0] rounded-full px-5 py-2 text-sm mb-10">
                   Testimonials
                 </button>
-                <h1 className="text-4xl lg:text-4xl">
+                <h2 className="text-4xl lg:text-4xl">
                   What Our Clients{" "}
                   <span className="bg-white text-transparent bg-clip-text font-bold">
                     Say About Us
                   </span>
-                </h1>
+                </h2>
                 <p className="text-white mt-6 mb-10 leading-relaxed max-w-md">
                   Hear from our satisfied clients about how we&apos;ve helped
                   them achieve their goals with tailored solutions.
                 </p>
-                <h1 className="text-5xl font-bold mb-2" data-aos="flip-down">500+</h1>
+                <h4 className="text-5xl font-bold mb-2" data-aos="flip-down">500+</h4>
                 <p className="text-lg my-10">Happy Clients</p>
               </div>
             </div>

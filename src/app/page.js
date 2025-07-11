@@ -1,3 +1,4 @@
+
 import Navbar from "./components/header";
 import Herosection from "./components/herosection";
 import Customer from "./components/customer";
@@ -31,3 +32,4 @@ export default function Home() {
     </>
   );
 }
+

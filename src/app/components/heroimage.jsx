@@ -17,8 +17,8 @@ const Heroimage = () => {
     <div className="relative mt-5 z-10">
       {/* Line Image */}
       <motion.img
-        src="./images/line.png"
-        alt="Line"
+        src="./images-webp/line.webp"
+        alt="Line-Graph"
         className="absolute left-0 -rotate-12 h-6 lg:h-auto md:h-10"
         data-aos="fade-down"
         data-aos-duration="2000"
@@ -31,8 +31,8 @@ const Heroimage = () => {
 
       {/* Frame Image */}
       <motion.img
-        src="./images/Frame.png"
-        alt="Frame"
+        src="./images-webp/Frame.webp"
+        alt="Frame-image-webp"
         className="absolute right-0 rotate-17 h-10 lg:h-auto md:h-10"
         data-aos="fade-down"
         data-aos-duration="2000"
@@ -45,8 +45,8 @@ const Heroimage = () => {
 
       {/* Hero Image */}
       <motion.img
-        src="./images/hero.png"
-        alt="Hero"
+        src="./images-webp/hero.webp"
+        alt="Netsuitexpert-Dashboard-Hero"
         className="relative mx-auto"
         data-aos="flip-up"
         data-aos-easing="ease-out-cubic"

@@ -94,7 +94,7 @@ export default function Modal({ isOpen, onClose, children }) {
           <div className={`flex items-center justify-between`}>
             <button onClick={onClose} className="w-32 sm:w-40 md:w-48">
               <Image 
-                src="/images/Logo2.png" 
+                src="/images-webp/Logo2.webp" 
                 alt="Logo" 
                 width={180} 
                 height={100}

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://netsuitexpert.com
+
+# Sitemaps
+Sitemap: https://netsuitexpert.com/sitemap.xml

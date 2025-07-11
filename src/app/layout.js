@@ -27,8 +27,8 @@
 //     </html>
 //   );
 // }
-
-import { Geist, Geist_Mono } from "next/font/google";
+///////////////////////old layout.js
+/*import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -43,11 +43,135 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   return (
+    //lang attribute
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+      </body>
+    </html>
+  );
+}*/
+////////updated layout.js seo optimized
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import Script from "next/script";
+
+// Fonts
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+// SEO Metadata
+export const metadata = {
+  title: "NetSuite ERP & CRM Solutions | NetSuitExpert",
+  description:
+    "Expert NetSuite consulting for ERP, CRM, eCommerce & integration. Scalable custom solutions for business automation & growth.",
+  robots: "index, follow",
+  authors: [{ name: "NetSuitExpert" }],
+  publisher: "NetSuitExpert Inc.",
+  keywords: [
+    "NetSuite",
+    "ERP Solutions",
+    "CRM Integration",
+    "eCommerce Consulting",
+    "Business Automation",
+    "NetSuitExpert",
+  ],
+  icons: {
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: "NetSuite ERP & CRM Solutions | NetSuitExpert",
+    description:
+      "Trusted NetSuite consulting services for ERP, CRM, eCommerce, and integration. Grow your business with expert-led solutions.",
+    url: "https://netsuitexpert.com/",
+    siteName: "NetSuitExpert",
+    images: [
+      {
+        url: "https://netsuitexpert.com/cover-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NetSuite ERP Cover Image",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NetSuite ERP & CRM Solutions | NetSuitExpert",
+    description:
+      "Expert NetSuite services for ERP, CRM, and eCommerce integration. Scalable solutions to grow your business.",
+    site: "@NetSuitExpert",
+    images: ["https://netsuitexpert.com/cover-image.jpg"],
+  },
+  alternates: {
+    canonical: "https://netsuitexpert.com/",
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {children}
+
+        {/* ✅ JSON-LD: Organization Schema */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "NetSuitExpert",
+              url: "https://netsuitexpert.com",
+              logo: "https://netsuitexpert.com/logo.png",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+92-300-1234567",
+                contactType: "Customer Support",
+                areaServed: "Global",
+                availableLanguage: ["English"],
+              },
+              sameAs: [
+                "https://www.facebook.com/NetSuitExpert",
+                "https://www.linkedin.com/company/netsuitexpert",
+              ],
+            }),
+          }}
+        />
+
+        {/* ✅ JSON-LD: Service Schema */}
+        <Script
+          id="service-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Service",
+              serviceType: "NetSuite ERP & CRM Consulting",
+              provider: {
+                "@type": "Organization",
+                name: "NetSuitExpert",
+                url: "https://netsuitexpert.com",
+              },
+              areaServed: {
+                "@type": "Place",
+                name: "USA, UK, Pakistan",
+              },
+              description:
+                "Expert NetSuite consulting for ERP, CRM, eCommerce & integration. Scalable solutions for business automation and growth.",
+            }),
+          }}
+        />
       </body>
     </html>
   );

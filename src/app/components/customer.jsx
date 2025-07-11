@@ -31,7 +31,7 @@ const Customer = () => {
       >
         {/* Left Section */}
         <div className="lg:w-1/2 text-center lg:text-left">
-          <motion.h1
+          <motion.h2
             className="text-5xl leading-tight"
             data-aos="fade-up"
             data-aos-anchor-placement="top-center"
@@ -48,7 +48,7 @@ const Customer = () => {
             <span className="text-5xl bg-gradient-to-r from-[#0B56E0] to-[#367CFF] text-transparent bg-clip-text font-bold">
               <br /> NetSuite Solutions
             </span>
-          </motion.h1>
+          </motion.h2>
           <motion.p
             className="text-[#6A7080] text-sm sm:text-md font-medium my-4 sm:my-5"
             data-aos="fade-up"
@@ -90,7 +90,7 @@ const Customer = () => {
             </p>
           </motion.div>
           <motion.img
-            src="./images/people.png"
+            src="./images-webp/people.webp"
             alt="People"
             className="w-28 h-12 sm:w-36 sm:h-16 object-contain"
             data-aos="fade-up"
