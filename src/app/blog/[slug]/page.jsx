@@ -563,7 +563,7 @@ export default function BlogDetail({ params }) {
                 src="/images/Frame.png"
                 alt="Frame"
                 className="absolute right-0 rotate-17 h-9 w-9 lg:h-8 md:h-8"
-                data-aos="fade-down"
+                data-aos="fade-down"  
                 data-aos-duration="2000"
                 style={{ top: 0 }}
                 initial={{ opacity: 0, y: -50 }}

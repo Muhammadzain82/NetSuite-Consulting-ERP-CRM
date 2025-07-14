@@ -70,12 +70,12 @@ const Experts = () => {
       </button>
 
       {/* Heading */}
-      <h1 className="text-3xl md:text-5xl my-5 text-center" data-aos="fade-up">
+      <h2 className="text-3xl md:text-5xl my-5 text-center" data-aos="fade-up">
         Expertise That{" "}
         <span className="bg-black text-transparent bg-clip-text font-bold">
           Matters
         </span>
-      </h1>
+      </h2>
 
       {/* Description */}
       <p className="text-[#6A7080] text-center max-w-2xl mx-auto" data-aos="fade-up">

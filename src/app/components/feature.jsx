@@ -5,6 +5,7 @@ import { DM_Sans } from "next/font/google";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const dmSans = DM_Sans({
     subsets: ["latin"],
@@ -33,9 +34,11 @@ const Feature = () => {
                         transition={{ duration: 1 }}
                         viewport={{ once: false, amount: 0.3 }}
                     >
-                        <img
-                            src="./images/Group 58.png"
-                            alt=""
+                        <Image
+                            src="/images-webp/Group58.webp"
+                            alt="NetSuite ERP Features"
+                            width={600}
+                            height={600}
                             className="h-auto w-auto lg:p-10"
                             data-aos="fade-zoom-in"
                             data-aos-easing="ease-in-back"
@@ -64,7 +67,7 @@ const Feature = () => {
                             Features
                         </motion.button>
 
-                        <motion.h1
+                        <motion.h2
                             className="text-5xl text-white mt-10"
                             data-aos="fade-down"
                             data-aos-easing="linear"
@@ -78,7 +81,7 @@ const Feature = () => {
                             <span className="bg-white text-5xl text-transparent bg-clip-text font-bold">
                                 NetSuite ERP
                             </span>
-                        </motion.h1>
+                        </motion.h2>
 
                         <motion.p
                             className="max-w-2xl text-white my-10"
@@ -90,7 +93,7 @@ const Feature = () => {
                             transition={{ duration: 1, delay: 0.2 }}
                             viewport={{ once: false }}
                         >
-                            NetSuite ERP offers a comprehensive suite of tools, including financial management, inventory tracking, order management, CRM integration, and advanced reporting. Designed to streamline operations, enhance decision-making, and support global scalability, it’s the ultimate solution for driving business growth and efficiency.
+                            NetSuite ERP offers a comprehensive suite of tools, including financial management, inventory tracking, order management, CRM integration, and advanced reporting. Designed to streamline operations, enhance decision-making, and support global scalability, it's the ultimate solution for driving business growth and efficiency.
                         </motion.p>
 
                         {/* List of Features */}

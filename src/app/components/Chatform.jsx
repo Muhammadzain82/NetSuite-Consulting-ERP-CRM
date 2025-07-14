@@ -21,10 +21,10 @@ const Chatform = () => {
                 <div className="max-w-lg w-full px-8 py-20 text-center"
                     data-aos="fade-up"
                     data-aos-anchor-placement="center-center">
-                    <h1 className="text-6xl text-gray-800 leading-15">
+                    <h2 className="text-6xl text-gray-800 leading-15">
                         Bring <span className="font-bold">Your <br /> Ideas</span>
                         <span className="text-blue-600 font-bold"> to Life</span>
-                    </h1>
+                    </h2>
                     <p className="mt-6 text-gray-600">
                         Collaborate with us to explore how NetSuite can transform your
                         business processes and drive success.

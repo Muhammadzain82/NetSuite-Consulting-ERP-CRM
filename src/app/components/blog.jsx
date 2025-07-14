@@ -245,10 +245,10 @@ const scrollRight = () => {
 
         <div className="mt-8 flex justify-between items-start">
           <div className="max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
               Let&apos;s Talk NetSuite{" "}
               <span className="text-black">Tips, Trends & Tutorials</span>
-            </h1>
+            </h2>
             <p className="text-xl text-gray-600">
               Stay ahead in the world of ERP with expert insights, practical
               tips, and the latest updates on NetSuite
